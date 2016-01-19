@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		h1{color:orange;margin:20px auto;text-align:center;}
+		body{background:#000;}
+		input{border:none;border-radius:5px;background:orange;color:#fff;height:30px;width:150px;position:absolute;left:230px;top:130px;}
+		ul{width:490px;height:486px;margin:60px auto;position:relative;border:1px solid #000;background:#aaf2b6;}
+		ul li{height:150px;width:150px;border:1px solid #918876;float:left;list-style:none;margin:5px;}
+		.mini_img{
+			width:200px;height:200px;position:absolute;left:200px;top:180px;
+		}
+		img{height:150px;width:150px;}
+	</style>
+	<script src="startMove.js"></script>
+	<script>
+	window.onload=function(){
+		var oInput=document.getElementsByTagName("input")[0];
+		var oUl=document.getElementById("picshow");
+		var aLi=document.getElementsByTagName("li");
+		var arr=[];
+		var index=2;
+		for(var i=0;i<aLi.length;i++){
+
+			arr.push([aLi[i].offsetLeft,aLi[i].offsetTop]);
+			//alert(L);
+		}
+		for(var i=0;i<aLi.length;i++){
+			var L=arr[i][0];
+			var T=arr[i][1];
+			aLi[i].style.position="absolute";
+			aLi[i].style.left=L+'px';
+			aLi[i].style.top=T+'px';
+			aLi[i].style.margin=0;
+		}
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].index=i;
+			drag(aLi[i]);
+		}
+		oInput.onclick = function(){
+		
+		var randomArr = [0,1,2,3,4,5,6,7,8];
+		
+		randomArr.sort(function(n1,n2){
+			return Math.random() - 0.5;
+		});
+		
+		for(var i=0;i<aLi.length;i++){
+			startMove( aLi[i] , { left : arr[randomArr[i]][0] , top : arr[randomArr[i]][1] } );
+			
+			aLi[i].index = randomArr[i];
+			
+		}
+		
+	};
+		function drag(obj){
+			var disX=0;
+			var disY=0;
+			obj.onmousedown=function(ev){
+				index++;
+				var ev=ev||window.event;
+				disX=ev.clientX-obj.offsetLeft;
+				disY=ev.clientY-obj.offsetTop;
+				document.onmousemove=function(ev){
+					var ev=ev||window.event;
+					obj.style.left=ev.clientX-disX+'px';
+					obj.style.top=ev.clientY-disY+'px';
+					obj.style.zIndex=index;
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].style.border="1px solid #000";
+				}
+					var num=minValue(obj);
+					if(num){
+						num.style.border="1px solid red";
+					}
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+
+					var num = minValue(obj);
+					var tmp = 0;
+					
+					if(num){
+						startMove( num , { left : arr[obj.index][0] , top : arr[obj.index][1] } );
+						startMove( obj , { left : arr[num.index][0] , top : arr[num.index][1] } );
+						num.style.border = '';
+						
+						tmp = obj.index;
+						obj.index = num.index;
+						num.index = tmp;
+					}
+					else{
+						startMove( obj , { left : arr[obj.index][0] , top : arr[obj.index][1] } );
+					}
+					
+				}
+				return false;
+			}
+			
+		}
+		function minValue(obj){
+			var value=9999;
+			var index=-1;
+			for(var i=0;i<aLi.length;i++){
+				if(boom(obj,aLi[i]) && obj!=aLi[i]){
+					var c=getValue(obj,aLi[i]);
+					if(c<value){
+						value=c;
+						index=i;
+					}
+				}
+			}	
+			if(index!=-1){
+				return aLi[index];
+			}else{
+				return false;
+			}
+		}
+		function getValue(obj1,obj2){
+			var a=obj1.offsetLeft-obj2.offsetLeft;
+			var b=obj2.offsetTop-obj2.offsetTop;
+			return Math.sqrt(a*a+b*b);
+		}
+		function boom(obj1,obj2){
+			var L1=obj1.offsetLeft;
+			var W1=obj1.offsetLeft+obj1.offsetWidth;
+			var T1=obj1.offsetTop;
+			var H1=obj1.offsetTop+obj1.offsetHeight;
+
+			var L2=obj2.offsetLeft;
+			var W2=obj2.offsetLeft+obj2.offsetWidth;
+			var T2=obj2.offsetTop;
+			var H2=obj2.offsetTop+obj2.offsetHeight;
+			if(L1>W2||L2>W1||T1>H2||T2>H1){
+				return false;
+			}else{
+				return true;
+			}
+		}
+
+	};
+	</script>
+</head>
+<body>
+	<h1>拼图游戏</h1>
+	<input type="button" value="打乱顺序" id="input1">
+	<img class='mini_img' src='photos/mini.jpg' />
+	<ul id="picshow">
+		<li><img src="photos/1.jpg" /></li>
+		<li><img src="photos/2.jpg" /></li>
+		<li><img src="photos/3.jpg" /></li>
+		<li><img src="photos/4.jpg" /></li>
+		<li><img src="photos/5.jpg" /></li>
+		<li><img src="photos/6.jpg" /></li>
+		<li><img src="photos/7.jpg" /></li>
+		<li><img src="photos/8.jpg" /></li>
+		<li><img src="photos/9.jpg" /></li>
+	</ul>
+</body>
+</html>

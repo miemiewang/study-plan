@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+window.onload=function(){
+	var str="hello";
+	String.prototype.lastValue=function(){
+		return this.charAt(this.length-1);
+	};//基本类型会找到对应的包装对象类型，然后包装对象把所有的属性和方法给了基本类型，然后包装对象消失
+	//alert(str.lastValue());
+	str.number=4;//在str包装对象中创建了一个number属性，然后消失
+	alert(str.number);//重新创建了一个number属性，未定义
+}
+</script>
+<body>
+		
+</body>
+</html>

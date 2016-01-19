@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		var oSpan=document.getElementById("span1");
+		bindEvent(oDiv,"click",function(){
+			alert(1);
+		})
+		bindEvent(oDiv,"click",function(){
+			alert(2);
+		})
+		bindEvent(oSpan,"show",function(){
+			alert(3);
+		})
+		bindEvent(oSpan,"show",function(){
+			alert(4);
+		})
+		selfAttach(oSpan,"show");
+		function bindEvent(obj,event,fn){
+			//obj:书架
+			//event:书的类别
+			//fn:书的名字
+			obj.listener=obj.listener||{};
+			obj.listener[event]=obj.listener[event]||[];
+			obj.listener[event].push(fn);
+			if(obj.addEventListener){
+				obj.addEventListener(event,fn,false);
+			}else{
+				obj.addEvent("on"+event,fn)
+			}
+		}
+		function selfAttach(obj,event){
+			for(var i=0;i<obj.listener[event].length;i++){
+				obj.listener[event][i]();
+			}
+		}
+	}
+</script>
+<body>
+	<div id="div1">div1</div>
+	<span id="span1">span1</span>	
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var list=document.getElementById('list');
+			var oEle=getClass(list,'box1');
+			for(var i=0;i<oEle.length;i++){
+				oEle[i].style.background="red";
+			}
+			function getClass(oParent,oClass){
+				var arr=[];
+				var re=new RegExp('\\b'+oClass+'\\b');
+				var cEle=oParent.getElementsByTagName('*');
+				for(var i=0;i<cEle.length;i++){
+					if(re.test(cEle[i].className)){
+						arr.push(cEle[i]);
+					}
+				}
+				return arr;
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id='list'>
+		<li class='box1 box2'>111111111111</li>
+		<li class='box1'>22222222</li>
+		<li class='box2 box3'>33333333333</li>
+		<li class='box2'>44444444444</li>
+		<li class='box1box2'>000000000</li>
+	</ul>
+</body>
+</html>

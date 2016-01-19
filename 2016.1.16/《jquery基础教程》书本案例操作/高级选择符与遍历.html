@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{
+			text-align:left;
+		}
+		thead{
+			color:#fff;
+			background:#000;
+		}
+		tbody th{
+			background:#f4f4f4;
+			color:#fff;
+			padding-right:10px;
+		}
+		td{
+			padding-right:20px;
+		}
+		.selected{
+			background:orange;
+		}
+		.alt{
+			background:yellow;
+		}
+	</style>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script>
+		$(function(){
+			/*$('#news').find('tr.alt').removeClass('alt');
+			$('#news tr:visible:nth-child(even)').has('td').addClass('alt');*/
+			function str(){
+				$('#news').find('tr.alt').removeClass('alt');
+				$('#news tbody').each(function(){
+					$(this).children(':visible').has('td').filter(':nth-child(even)').addClass('alt');
+				})
+			}
+			str();
+			$('#topics a').click(function(){
+			//	$('#topics a.selected').removeClass('.selected');
+
+				$(this).addClass('selected').siblings().removeClass('selected');
+				var topic=$(this).text();
+				$('#news tr').show();
+				if(topic!='all'){
+					$('#news tr:has(td)').not(function(){
+						return $(this).children('td:nth-child(4)').text()==topic;
+					}).hide();
+				}
+				str();
+				/*$('#news').find('tr.alt').removeClass('alt');
+				$('#news tr:visible:nth-child(even)').has('td').addClass('alt');*/
+			})
+			alert($('.cols')[0].cellIndex)
+		})
+	</script>
+</head>
+<body>
+	<div id='topics'>
+		topics:
+		<a href='javascript:;' class='selected'>all</a>
+		<a href='javascript:;'>community</a>
+		<a href='javascript:;'>conferences</a>
+		<a href='javascript:;'>documentatiion</a>
+		<a href='javascript:;'>plugins</a>
+		<a href='javascript:;'>releases</a>
+		<a href='javascript:;'>friends</a>
+	</div>
+	<table id='news'>
+		<thead>
+			<tr><th>date</th><th>headline</th><th>author</th><th>topic</th></tr>
+		</thead>
+		<tbody>
+			<tr><th colspan='4'>2011</th></tr>
+			<tr class='row'>
+				<td class='cols'>apr 15</td>
+				<td>2222222</td>
+				<td>john</td>
+				<td>releases</td>
+			</tr>
+			<tr>
+				<td>apr 16</td>
+				<td>releases</td>
+				<td>bob</td>
+				<td>plugins</td>
+			</tr>
+			<tr>
+				<td>apr 17</td>
+				<td>6666666</td>
+				<td>david</td>
+				<td>community</td>
+			</tr>
+			<tr>
+				<td>apr 19</td>
+				<td>6666666</td>
+				<td>bob</td>
+				<td>conferences</td>
+			</tr>
+			<tr>
+				<td>apr 20</td>
+				<td>6666666</td>
+				<td>david</td>
+				<td>friends</td>
+			</tr>
+			<tr><th colspan='4'>2012</th></tr>
+			<tr>
+				<td>feb 15</td>
+				<td>2222222</td>
+				<td>john</td>
+				<td>releases</td>
+			</tr>
+			<tr>
+				<td>feb 16</td>
+				<td>6666666</td>
+				<td>bob</td>
+				<td>plugins</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

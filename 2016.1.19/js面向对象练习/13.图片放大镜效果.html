@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{height:180px;width:180px;position:relative;float:left;margin-right:20px;}
+	#mark{height:180px;width:180px;background:red;left:0;top:0;position:absolute;opacity:0;filter:alpha(0);}
+	span{height:50px;width:50px;position:absolute;background:yellow;opacity:0.5;filter:alpha(50);left:0;top:0;display:none;}
+	#div2{height:500px;width:500px;overflow:hidden;position:relative;}
+	#div2 img{position:absolute;left:0;top:0;display:none;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		var oSpan=document.getElementsByTagName("span")[0];
+		var div2=document.getElementById("div2");
+		var oImg=div2.getElementsByTagName("img")[0];
+		oDiv.onmouseenter=function(){
+			oSpan.style.display="block";
+			oImg.style.display="block";
+		}
+		oDiv.onmouseleave=function(){
+			oSpan.style.display="none";
+			oImg.style.display="none";
+			oImg.style.left=0;
+			oImg.style.top=0;
+		}
+		oDiv.onmousemove=function(ev){
+			var ev=window.event||ev;
+			var L=ev.clientX-oDiv.offsetLeft-(oSpan.offsetWidth/2);
+			var H=ev.clientY-oDiv.offsetTop-(oSpan.offsetHeight/2);
+			if(L<0){
+				L=0;
+			}else if(L>130){
+				L=130;
+			}
+			if(H<0){
+				H=0;
+			}else if(H>130){
+				H=130;
+			}
+			oSpan.style.left=L+'px';
+			//alert(getStyle(oSpan,"left"));
+			oSpan.style.top=H+'px';
+			scaleX=L/130;
+			scaleY=H/130;
+			oImg.style.left=(-scaleX*400)+'px';
+			oImg.style.top=(-scaleY*400)+'px';
+		}
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:window.getComputedStyle(obj,null)[attr];
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<img src="b2.jpg" />
+		<span></span>
+		<div id="mark"></div>
+	</div>
+	<div id="div2">
+		<img src="b1.jpg" />
+	</div>	
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.imgshow{border:1px solid #000;width:1100px;}
+		.caption{border:1px solid #000;height:30px;}
+		.caption h2,.caption div{float:left;}
+		.caption em{float:right;}
+		.highlight{width:100px;}
+		.highlight span{margin:10px;line-height:30px;}
+		.updown span{display:inline-block;width:30px;height:30px;background:#f5f5f5;border-radius:10px;text-align:center;line-height:30px;}
+		.updown{margin:0 20px;}
+		img{width:220px;height:150px;}
+		li{display:inline-block;margin:26px;border:1px solid #000;}
+		.imglist{position:relative;}
+		.content{position:absolute;border:1px solid #000;margin:0;}
+		.active{color:orange;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			var imgLen=$('img').length;
+			var i=4;
+			var showW=$('.imgshow').width();
+			var page=Math.ceil(imgLen/i);
+			var start=1;
+			$('.content').css('width',showW*page);
+			$('.down').click(function(){
+				if(!$('.content').is(':animated')){
+					if(start==page){
+					$('.content').animate({
+						'left':0
+					},'slow')
+					start=1;
+					}else{
+					$('.content').animate({
+						'left':'-='+showW
+					},'slow')
+					start++;
+					}
+				}	
+				$('.highlight span').eq(start-1).addClass('active');
+				$('.highlight span').eq(start-1).siblings().removeClass('active');
+			})
+			$('.up').click(function(){
+				if(!$('.content').is(':animated')){
+					if(start==1){
+					$('.content').animate({
+						'left':'-='+showW*(page-1)
+					},'slow')
+					start=page;
+					}else{
+					$('.content').animate({
+						'left':'+='+showW
+					},'slow')
+					start--;
+					}
+				}	
+				$('.highlight span').eq(start-1).addClass('active');
+				$('.highlight span').eq(start-1).siblings().removeClass('active');
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class='imgshow'>
+		<div class='caption'>
+			<h2 class='title'>卡通动漫</h2>
+			<div class='highlight'>
+				<span class='active'>1</span><span>2</span><span>3</span><span>4</span>
+			</div>
+			<div class='updown'>
+				<span class='up'><</span>
+				<span class='down'>></span>
+			</div>
+			<em><a href='javascript:;'>更多>></a></em>
+		</div>
+		<div class='imglist'>
+			<div class='content'>
+				<ul>
+					<li><img src='1.jpg' /><h4><span>动漫一</span><span>播放次数：1000</span></h4></li><li><img src='2.jpg' /><h4><span>动漫二</span><span>播放次数：2000</span></h4></li><li><img src='3.jpg' /><h4><span>动漫三</span><span>播放次数：1400</span></h4></li><li><img src='4.jpg' /><h4><span>动漫四</span><span>播放次数：300</span></h4></li><li><img src='5.jpg' /><h4><span>动漫五</span><span>播放次数：1080</span></h4></li><li><img src='6.jpg' /><h4><span>动漫六</span><span>播放次数：4050</span></h4></li><li><img src='7.jpg' /><h4><span>动漫七</span><span>播放次数：1104</span></h4></li><li><img src='8.jpg' /><h4><span>动漫八</span><span>播放次数：1035</span></h4></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('#checkedAll').click(function(){
+				if(this.checked){
+					$('[name=items]:checkbox').prop('checked',true);
+				}else{
+					$('[name=items]:checkbox').prop('checked',false);
+				}
+			})
+			$('[name=items]:checkbox').click(function(){
+				var onoff=true;
+				$('[name=items]:checkbox').each(function(){
+					if(!this.checked){
+						onoff=false;
+						$(this).css('fontSize',22)
+					}
+				})
+				$('#checkedAll').prop('checked',onoff);
+			})
+		})		
+	</script>
+</head>
+<body>
+	<form>
+	<input type='checkbox' id='checkedAll' />全选/全部选<br/>
+	<input type='checkbox' name='items' value='足球' />足球
+	<input type='checkbox' name='items' value='篮球' />篮球
+	<input type='checkbox' name='items' value='羽毛球' />羽毛球
+	<input type='checkbox' name='items' value='乒乓球' />乒乓球<br/>
+	<input type='button' id='send' value='提交' />
+	</form>
+</body>
+</html>

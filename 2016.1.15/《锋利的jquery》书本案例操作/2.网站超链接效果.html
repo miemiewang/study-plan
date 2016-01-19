@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('a.tip').mouseover(function(ev){
+				this.myTitle=this.title;
+				this.title='';
+				var remind=$('<div class="remind">'+this.myTitle+'</div>');
+				$('body').append(remind);
+				$('.remind').css({
+					'position':'absolute',
+					'top':ev.pageY,
+					'left':ev.pageX,
+					'width':200,
+					'height':25
+				}).show('fast');
+				///alert(ev.pageX+' '+ev.pageY)
+				//alert(remind.offset().left+' '+remind.offset().top)
+			})
+			$('a.tip').mouseout(function(){
+				this.title=this.myTitle;
+				$('.remind').remove();
+			})
+			$('a.tip').mousemove(function(ev){
+				$('.remind').css({
+					'top':ev.pageY,
+					'left':ev.pageX
+				})
+			})
+			$('.num1').mouseover(function(){
+				$('.num2').show();
+			}).mouseout(function(){
+				$('.num2').hide();
+			})
+		})
+	</script>
+</head>
+<body>
+	<p><a href='#' class='tip' title='这是我的超链接提示1'>提示1</a></p>
+	<p><a href='#' class='tip' title='这是我的超链接提示2'>提示2</a></p>
+	<p><a href='#' title='这是自带提示1'>提示1</a></p>
+	<p><a href='#' title='这是自带提示2'>提示2</a></p>
+	<div class='num1' style='position:relative;height:50px;width:50px;background:red'>
+		<div class='num2' style='position:absolute;height:50px;width:50px;left:0;top:50px;background:blue;display:none;'>
+		</div>
+	</div>
+</body>
+</html>

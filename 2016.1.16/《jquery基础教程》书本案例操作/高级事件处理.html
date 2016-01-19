@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.wrapper{margin:0 auto;width:1000px;}
+		img{width:250px;height:300px;}
+		.picshow{width:250px;height:300px;position:relative;float:left;margin:10px;}
+		.details{position:absolute;right:0;bottom:0;color:#000;font-weight:bold;display:none;}
+	</style>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script>
+		$(function(){
+			/*$('.details').css('opacity',1);
+			$('.picshow').hover(function(){
+				$(this).find('.details').fadeIn('slow')
+			},function(){
+				$(this).find('.details').fadeOut('slow');
+			})*/
+			//未完成代码
+			/*$('.wrapper').on('mouseover mouseout',function(event){
+				var target=$(event.target).closest('div.picshow');
+				var details=target.find('.details');
+				var related=$(event.relatedTarget).closest('div.picshow');
+				if(event.type=='mouseover'&&target.length){
+					details.fadeIn('slow')
+				}else if(event.type=='mouseout'&&!related.length){
+					details.fadeOut('slow');
+				}
+			})*/
+			//支持未来新添加元素事件设置
+			$(document).on('mouseenter mouseleave','div.picshow',function(event){
+				var details=$(this).find('.details');
+				if(event.type=='mouseenter'){
+					details.fadeTo('slow',0.9)
+				}else{
+					details.fadeTo('slow',0);
+				}
+			})
+			//只能绑定当前存在元素
+			/*$('div.picshow').on('mouseenter mouseleave',function(event){
+				var details=$(this).find('.details');
+				if(event.type=='mouseenter'){
+					details.fadeIn('slow')
+				}else{
+					details.fadeOut('slow');
+				}
+			})*/
+		})
+	</script>
+</head>
+<body>
+	<div class='wrapper'>
+		<div class='picshow'>
+			<img src='1.jpg' />
+			<div class='details'>
+				<p class='describe'>图片一</p>
+				<p class='date'>2015.11.11</p>
+				<p class='author'>yang</p>
+			</div>
+		</div>
+		<div class='picshow'>
+			<img src='2.jpg' />
+			<div class='details'>
+				<p class='describe'>图片二</p>
+				<p class='date'>2015.11.10</p>
+				<p class='author'>lili</p>
+			</div>
+		</div>
+		<div class='picshow'>
+			<img src='3.jpg' />
+			<div class='details'>
+				<p class='describe'>图片三</p>
+				<p class='date'>2015.11.12</p>
+				<p class='author'>wang</p>
+			</div>
+		</div>
+		<div class='picshow'>
+			<img src='4.jpg' />
+			<div class='details'>
+				<p class='describe'>图片四</p>
+				<p class='date'>2015.11.15</p>
+				<p class='author'>dong</p>
+			</div>
+		</div>
+		<div class='picshow'>
+			<img src='5.jpg' />
+			<div class='details'>
+				<p class='describe'>图片五</p>
+				<p class='date'>2015.11.14</p>
+				<p class='author'>xixi</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

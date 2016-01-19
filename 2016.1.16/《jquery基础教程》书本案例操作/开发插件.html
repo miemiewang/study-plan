@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	h3{
+		
+	}
+		thead{
+			color:#fff;
+			background:#000;
+		}
+		th{
+			text-align:left;
+		}
+	</style>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script>
+		(function($){
+			//扩展全局jquery对象
+			/*$.extend({
+				sum:function(array){
+				var total=0;
+				$.each(array,function(index,value){
+					//value=$.trim(value);
+					value=parseFloat(value)||0;
+					total+=value;
+					})
+				return total;
+				},
+				average:function(array){
+					if($.isArray(array)){
+						return $.sum(array)/array.length;
+					}
+					return '';
+				}
+			})*/
+			//使用命名空间隔离函数
+			$.mathUtils={
+				sum:function(array){
+				var total=0;
+				$.each(array,function(index,value){
+					//value=$.trim(value);
+					value=parseFloat(value)||0;
+					total+=value;
+					})
+				return total;
+				},
+				average:function(array){
+					if($.isArray(array)){
+						return $.mathUtils.sum(array)/array.length;
+					}
+					return '';
+				}
+			}
+			//添加jquery对象方法
+			$.fn.swapClass=function(class1,class2){
+				return this.each(function(){
+					var element=$(this);
+					if(element.hasClass(class1)){
+						element.removeClass(class1).addClass(class2);
+					}else if(element.hasClass(class2)){
+						element.removeClass(class2).addClass(class1);
+					}
+				})
+			};
+			$.fn.shadow=function(opts){
+				var options=$.extend({},$.fn.shadow.defaults,opts);//有回调用回调，无则用默认值
+				return this.each(function(){
+					var title=$(this);
+					for(var i=0;i<options.copies;i++){
+						var offset=options.copyOffset(i);
+						title.clone().css({
+							'position':"absolute",
+							left:title.offset().left+offset.x,
+							top:title.offset().top+offset.y,
+							opacity:options.opacity,
+							zIndex:-1,
+							margin:0
+						}).appendTo($('body'))
+					}
+				})
+			}
+			$.fn.shadow.defaults={
+					copies:5,
+					opacity:0.1,
+					copyOffset:function(index){
+						return {x:index,y:index};
+				}
+			};
+		})(jQuery)
+		$(function(){
+			var invent=$('#inventory tbody');
+			var quantities=invent.find('td:nth-child(2)').map(function(index,qty){
+				return $(qty).text();
+			}).get();
+			var sum=$.mathUtils.sum(quantities);
+			$('#sum').find('td:nth-child(2)').text(sum);
+			//平均值
+			var price=invent.find('td:nth-child(3)').map(function(i,value){
+				return $(value).text();
+			}).get();
+			var average=$.mathUtils.average(price);
+			$('#average').find('td:nth-child(3)').text(average.toFixed(2));
+			//增减class
+			$('table').click(function(){
+				$('tr').swapClass('one','two');
+			})
+			//增加阴影效果
+			$.fn.shadow.defaults.copies=10;
+			$('h3').shadow({
+				copyOffset:function(index){
+					return {x:-index,y:-index*2};
+				}
+				
+			});
+		})
+	</script>
+</head>
+<body>
+	<h3 class='title'>Inventory</h3>
+	<table id='inventory'>
+		<thead>
+			<tr class='one'><th>product</th><th>quantity</th><th>price</th></tr>
+		</thead>
+		<tbody>
+			<tr><td><a href='span.html' data-tooltip-text='Nutritious and delicious'>spam</a></td><td>4</td><td>2.5</td></tr>
+			<tr><td><a href='egg.html' data-tooltip-text='Farm fresh or scrambled'>egg</a></td><td>12</td><td>4.32</td></tr>
+			<tr><td><a href='gourmet-span.html' data-tooltip-text="Chef Herman's recipe">gourmet spam</a></td><td>14</td><td>7.89</td></tr>
+		</tbody>
+		<tfoot>
+			<tr class='two' id='sum'><td>total</td><td></td><td></td></tr>
+			<tr id='average'><td>average</td><td></td><td></td></tr>
+		</tfoot>
+	</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		;(function($){
+			jQuery.fn.extend({
+				'color':function(value){
+					if(value==undefined){
+						return this.css('color');
+					}else{
+						return this.css('color',value);
+					}
+				},
+				'border':function(value){
+					if(value==undefined){
+						return this.css('border');
+					}else{
+						return this.css('border',value);
+					}
+				}
+			})
+		})(jQuery)
+		$(function(){
+			alert($('div').color());
+			alert($('div').border());
+		})
+	</script>
+</head>
+<body>
+	<div style='color:#000;border:none;'>1234567</div>
+</body>
+</html>

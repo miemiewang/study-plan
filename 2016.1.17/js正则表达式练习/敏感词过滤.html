@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+/*百度拥有数千名研发工程师，这是中国乃至全球最为优秀的技术团队，
+这支队伍掌握着世界上最为先进的搜索引擎技术，使百度成为中国掌握世界尖端科学
+核心技术的中国高科技企业，也使中国成为美国、俄罗斯、和韩国之外，全球仅有的4个拥有搜索引
+擎核心技术的国家之一。	*/
+   var aText=document.getElementsByTagName('textarea');
+   var oBtn=document.getElementsByTagName('input')[0];
+  
+  // var re=/百度|中国|国/g;
+  	var re=/\D+/g;
+  	var str='abc';
+  //	alert(str.match(re));
+   oBtn.onclick=function(){
+	  aText[1].value=aText[0].value.replace(re,function(str){
+		 // alert(str);
+		 var result='';
+		 for(var i=0;i<str.length;i++){
+			result+='*'; 
+			//str.charAt(i)='*';不可以给常量赋值
+		 }
+		 return result;
+	  });
+
+   }
+</script>
+</head>
+
+<body>
+<p>替换前</p>
+<textarea cols="30" rows="10"></textarea>
+<p>替换后</p>
+<textarea cols="30" rows="10"></textarea><br/>
+<input type='button' value='替换' />
+</body>
+</html>

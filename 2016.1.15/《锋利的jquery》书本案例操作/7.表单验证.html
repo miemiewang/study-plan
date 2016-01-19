@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{margin:10px;}
+		label{display:inline-block;width:80px;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			var err=null;
+			$('.required').after('<em style="color:red;">*</em>');
+			$('input').blur(function(){
+				var $parent=$(this).parent();
+				if($(this).is('#username')){
+					if(this.value==''||this.value.length<6){
+						err='请输入至少六位的用户名';
+						$parent.find('.tip').remove();
+						$parent.append('<span class="tip onerr" style="color:red;">'+err+'</span>');
+					}else{
+						err='输入正确';
+						$parent.find('.tip').remove();
+						$parent.append('<span class="tip" style="color:green;">'+err+'</span>');
+					}
+				}
+				if($(this).is('#email')){
+					if(this.value==''||(this.value!=""&&!/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))){
+						var err='请输入正确的email地址';
+						$parent.find('.tip').remove();
+						$parent.append('<span class="tip onerr" style="color:red;">'+err+'</span>');
+					}else{
+						var rig='输入正确';
+						$parent.find('.tip').remove();
+						$parent.append('<span class="tip" style="color:blue;">'+rig+'</span>');
+					}
+				}
+			})
+			$('#send').click(function(){
+				$('form .required').trigger('blur');
+				var numerr=$('form .onerr').length;
+				if(numerr){
+					return false;
+				}
+				alert('bingo!')
+			})
+		})
+	</script>
+</head>
+<body>
+	<form method='post' action=''>
+		<div class='int'>
+			<label for='username'>用户名:</label>
+			<input type='text' id='username' class='required' />
+		</div>
+		<div class='int'>
+			<label for='email'>邮箱:</label>
+			<input type='text' id='email' class='required' />
+		</div>
+		<div class='int'>
+			<label for='person'>个人资料:</label>
+			<input type='text' id='person' class='required' />
+		</div>
+		<div class='sub'>
+			<input type='submit' id='send' />
+		</div>
+	</form>
+</body>
+</html>

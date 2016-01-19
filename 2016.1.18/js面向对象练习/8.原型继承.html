@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+window.onload=function(){
+	//原型继承
+	function object(o){
+		function F(){};
+		F.prototype=o;
+		return new F();
+	}
+	var person={
+		name:"wangyang",
+		sayName:function(){
+			alert(this.name);
+		}
+	}
+	var fn1=object(person);
+	fn1.sayName();
+	var fn2=object(person);
+	alert(fn2.sayName==fn1.sayName);
+	//问题：属性和方法共享，不利于创建多个实例
+}
+</script>
+<body>
+	
+</body>
+</html>

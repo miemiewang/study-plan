@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script src='jquery.cookie.js'></script>
+	<script>
+		$(function(){
+			var cName='username';
+			if($.cookie(cName)){
+				$('#username').val($.cookie(cName));
+			}
+			$('#check').click(function(){
+				if(this.checked){
+					$.cookie(cName,$('#username').val(),{path:'/',expires:10})
+				}else{
+					$.cookie(cName,null,{path:'/'})
+				}
+			})
+		})
+	</script>
+</head>
+<body>
+	用户名：<input type='text' name='username' id='username' />
+	<input type='checkbox' name='check' id='check' />记住用户名
+</body>
+</html>

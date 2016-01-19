@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			margin:0;
+			padding:0;
+			height:100px;
+			width:100px;
+			position:absolute;
+			background:red;
+		}
+	</style>
+	<script>
+	/*var oDiv=null;
+	var disX=null;
+	var disY=null;
+	window.onload=function(){
+		oDiv=document.getElementById("div1");
+		disX=0;
+		disY=0;
+		init();
+	}
+	function init(){
+		oDiv.onmousedown=fndown;
+	}
+	function fndown(ev){
+			var ev=event||ev;
+			disX=ev.clientX-oDiv.offsetLeft;
+			disY=ev.clientY-oDiv.offsetTop;
+			document.onmousemove=fnmove;
+			document.onmouseup=fnup;
+		}
+	function fnmove(ev){
+				var ev=event||ev;
+				oDiv.style.left=ev.clientX-disX+'px';
+				oDiv.style.top=ev.clientY-disY+'px';
+
+			}
+	function fnup(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}*/
+	window.onload=function(){
+		var fn1=new Tab();
+		fn1.init();
+	}
+	function Tab(){
+		this.oDiv=document.getElementById("div1");
+		this.disX=0;
+		this.disY=0;
+		
+	}
+	Tab.prototype.init=function(){
+		var This=this;
+		this.oDiv.onmousedown=function(ev){	
+			var ev=window.event||ev;		
+			This.fndown(ev);
+			return false;
+		}
+	}
+	Tab.prototype.fndown=function(ev){
+		var This=this;
+		this.disX=ev.clientX-this.oDiv.offsetLeft;
+		this.disY=ev.clientY-this.oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var ev=window.event||ev;	
+			This.fnmove(ev);
+		};
+		document.onmouseup=function(){
+			This.fnup();
+		};
+	}
+	Tab.prototype.fnmove=function(ev){
+		
+		this.oDiv.style.left=ev.clientX-this.disX+'px';
+		this.oDiv.style.top=ev.clientY-this.disY+'px';
+	}
+	Tab.prototype.fnup=function(){
+		document.onmousemove=null;
+		document.onmouseup=null;
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+
+	</div>
+</body>
+</html>

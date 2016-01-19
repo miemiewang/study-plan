@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		a{text-decoration:none;color:#000;}
+		.box{border:1px solid #000;width:500px;margin:0 auto;}
+		ul{list-style:none;}
+		li{display:inline-block;width:160px;}
+		.showmore{text-align:center;margin-top:20px;}
+		.active{color:orange;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			var $cate=$('ul li:gt(5):not(:last)');
+			$cate.hide();
+			$('.showmore').click(function(){
+				if($cate.is(':hidden')){
+					$cate.show();
+					$(this).find('span').html('精简显示品牌');
+					$('ul li').filter(":contains('佳能'),:contains('尼康'),:contains('柯达')").addClass('active');
+					
+				}else{
+					$cate.hide();
+					$(this).find('span').html('显示全部品牌');
+					$('ul li').removeClass('active');
+				}
+				return false;
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class='box'>
+		<ul>
+			<li><a href='#'>佳能</a><i>(30440)</i></li>
+			<li><a href='#'>索尼</a><i>(27220)</i></li>
+			<li><a href='#'>三星</a><i>(20808)</i></li>
+			<li><a href='#'>尼康</a><i>(17821)</i></li>
+			<li><a href='#'>松下</a><i>(12289)</i></li>
+			<li><a href='#'>卡西欧</a><i>(8242)</i></li>
+			<li><a href='#'>富士</a><i>(14894)</i></li>
+			<li><a href='#'>柯达</a><i>(9520)</i></li>
+			<li><a href='#'>宾得</a><i>(2195)</i></li>
+			<li><a href='#'>理光</a><i>(4114)</i></li>
+			<li><a href='#'>奥林巴斯</a><i>(12204)</i></li>
+			<li><a href='#'>明基</a><i>(1466)</i></li>
+			<li><a href='#'>爱国者</a><i>(3091)</i></li>
+			<li><a href='#'>其他品牌相机</a><i>(7440)</i></li>
+		</ul>
+		<div class='showmore'>
+			<a href='more.html'><span>显示全部品牌</span></a>
+		</div>
+	</div>
+</body>
+</html>

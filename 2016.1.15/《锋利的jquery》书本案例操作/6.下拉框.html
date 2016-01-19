@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('#btn1').click(function(){
+				$('#select1 option').each(function(){
+					/*var options=$('#select1 option:selected');
+					var ele=options.remove();
+					$('#select2').append(ele);*/
+					//alert(this.selected);
+					if(this.selected){
+						this.selected=false;
+						var ele=$(this).remove();
+						$('#select2').append(ele);
+					}
+				})
+			})
+			$('#btn2').click(function(){
+				var options=$('#select1 option').remove();
+				$('#select2').append(options);
+
+			})
+			$('#btn3').click(function(){
+				if($('#select2')){
+					$('#select2 option').each(function(){
+					if(this.selected){
+						this.selected=false;
+						var ele=$(this).remove();
+						$('#select1').append(ele);
+					}
+					})
+				}
+				
+			})
+			$('#btn4').click(function(){
+				if($('#select2')){
+					var options=$('#select2 option').remove();
+					$('#select1').append(options);
+				}
+			})
+			$('#select1').dblclick(function(){
+				var options=$('option:selected',this);
+				$('#select2').append(options);
+				options.prop('selected',false);
+			})
+		})
+	</script>
+</head>
+<body>
+	<form>
+		<select multiple id='select1'  style='width:150px;height:200px;font-size:16px;'>
+			<option value='1'>选项1</option>
+			<option value='2'>选项2</option>
+			<option value='3'>选项3</option>
+			<option value='4'>选项4</option>
+			<option value='5'>选项5</option>
+			<option value='6'>选项6</option>
+			<option value='7'>选项7</option>
+			<option value='8'>选项8</option>
+		</select>
+		<input type='button' value='右移' id='btn1'/>
+		<input type='button' value='全部右移' id='btn2' />
+		<input type='button' value='左移' id='btn3' />
+		<input type='button' value='全部左移' id='btn4' />
+		<select multiple id='select2'  style='width:150px;height:200px;font-size:16px;'>
+		</select>
+	</form>
+</body>
+</html>

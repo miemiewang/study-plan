@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	window.onload=function(){
+		//原型链继承
+		function x(){
+			this.arr=[1,2,3];
+		}
+		x.prototype.sayName=function(){
+			alert(this.arr);
+		}
+		function y(){
+
+		}
+		y.prototype=new x();
+
+		var fn1=new y();
+		//alert(fn1==y);
+		fn1.sayName();
+		alert(fn1.constructor);
+		fn1.arr.push(4,5,6);
+		var fn2=new y();
+		fn2.sayName();
+		/*问题：1.constructor指向问题，y函数的实例constructor本应指向y，结果指向x
+		问题：2.prototype共享问题，属性和方法都被y原型继承，因此属性被修改会反应到原型中，不能独立*/
+		//寄生组合继承
+		function x(){
+			this.arr=[1,2,3];
+		}
+		x.prototype.sayName=function(){
+			alert(this.arr);
+		}
+		function y(){
+			x.call(this);//继承了属性
+		}
+		function z(){
+
+		}
+		z.prototype=x.prototype;
+		y.prototype=new z();//只继承了方法
+		var fn3=new y();
+		fn3.arr.push(4,5,6);
+		fn3.sayName();
+		var fn4=new y();
+		fn4.sayName();
+		//属性和方法分开继承，避免属性污染
+	}
+</script>
+<body>
+	
+</body>
+</html>

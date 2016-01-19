@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{height:100px;width:100px;margin:0;padding:0;background:red;position:absolute;}
+	#div2{height:100px;width:100px;margin:0;padding:0;background:yellow;position:absolute;left:100px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var fn1=new Tab("div1");
+		fn1.init();
+		var fn2=new childTab("div2");
+		fn2.init();
+	}
+	function Tab(id){
+		this.oDiv=document.getElementById(id);
+		this.disX=0;
+		this.disY=0;
+	}
+	Tab.prototype.init=function(){
+		var This=this;
+		this.oDiv.onmousedown=function(ev){
+			var ev=ev||window.event;
+			This.fndown(ev);
+			return false
+		}
+	}
+	Tab.prototype.fndown=function(ev){
+		var This=this;
+		this.disX=ev.clientX-this.oDiv.offsetLeft;
+		this.disY=ev.clientY-this.oDiv.offsetTop;
+			document.onmousemove=function(ev){
+				var ev=ev||window.event;
+				This.fnmove(ev);
+			}
+			document.onmouseup=function(){
+				This.fnup();
+			}
+	}
+	Tab.prototype.fnmove=function(ev){
+		this.oDiv.style.left=ev.clientX-this.disX+'px';
+		this.oDiv.style.top=ev.clientY-this.disY+'px';
+	}
+	Tab.prototype.fnup=function(){
+		document.onmousemove=null;
+		document.onmouseup=null;
+	}
+	function childTab(id){
+		Tab.call(this,id);
+	}
+	extend(childTab.prototype,Tab.prototype);
+	childTab.prototype.fnmove=function(ev){
+		var L=ev.clientX-this.disX;
+		var T=ev.clientY-this.disY;
+		if(L<0){
+			L=0;
+		}else if(L>document.documentElement.clientWidth-this.oDiv.offsetWidth){
+			L=document.documentElement.clientWidth-this.oDiv.offsetWidth;
+		}
+		this.oDiv.style.left=L+'px';
+		this.oDiv.style.top=T+'px';
+	}
+	function extend(obj1,obj2){
+		for(var attr in obj2){
+			obj1[attr]=obj2[attr];
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>	
+</body>
+</html>

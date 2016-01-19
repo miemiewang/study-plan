@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		label.error{font-size:14px;color:red;background:url(icon_36.png)no-repeat left center;padding-left:20px;margin-left:10px;}
+		label.math{margin-left:10px;display:inline-block;background:#fafafa;height:40px;width:40px;vertical-align:top;
+			text-align:center;line-height:40px;}
+		label.success{background:url(icon_29.png)no-repeat left center;margin-left:10px;}
+		form{border:1px solid #999;width:500px;box-shadow:5px 5px 5px #999; }
+		.login{color:#fff;font-size:22px;font-weight:bold;height:40px;background:#009d96;margin-top:0;padding-top:0;
+			line-height:40px;}
+		input{height:30px;}
+		p{padding-left:20px;}
+		em{color:#db2727;}
+		.submit{background:#009d96;color:#fff;width:200px;margin-left:100px;border:none;display:inline-block;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script src='jquery.metadata.js'></script>
+	<script src='messages_cn.js'></script>
+	<script>
+		$(function(){
+			$.validator.addMethod("formula",function(value,element,param){
+    			  return value==eval(param)
+  		  		},"请正确输入验证信息");
+			$('.cmxform').validate({
+				rules:{
+					username:{
+						required:true,
+						minlength:2
+						
+					},
+					email:{
+						required:true,
+						email:true
+					},
+					password:'password',
+					comment:'required',
+					valcode:{
+						formula:"1+1"
+					}
+				},
+				messages:{
+					username:{
+						required:'这个必须填哦亲',
+						minlength:'请输入两个以上字符'
+					},
+					email:{
+						required:'这个必须填哦亲',
+						email:'必须为邮箱格式'
+					}
+				},
+				errorElement:'label',
+				success:function(ele){
+					ele.text(" ").addClass("success");
+				}
+
+			});
+			
+		})
+	</script>
+</head>
+<body>
+	<form class='cmxform' id='commentForm' method='get' action='#'>
+		<p class='login'>请注册</p>
+		<p>
+			<label for='username'>用户名：</label><em>*</em>
+			<input type='text' size='25' name='username' />
+		</p>
+		<p>
+			<label for='email'>电子邮箱：</label><em>*</em>
+			<input type='text' size='25' name='email' />
+		</p>
+		<p>
+			<label for='password'>密码：</label><em>*</em>
+			<input type='password' size='25' name='password' />
+		</p>
+		<p>
+			<label for='valcode'>验证码：</label>
+			<input type='valcode' name='valcode' /><label class='math'>1+1</label>
+		</p>
+		<p>
+			<input class='submit' type='submit' value='注册' />
+		</p>
+	</form>	
+</body>
+</html>

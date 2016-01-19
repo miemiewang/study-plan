@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1,#div2{
+			margin:0;
+			padding:0;
+		}
+		.active{
+			background:red;
+		}
+		#div1 div,#div2 div{
+			height:200px;
+			width:200px;
+			border:1px solid #000;
+			display:none;
+		}
+	</style>
+	<script>
+	/*var div1;
+	var aInput;
+	var aDiv;
+	window.onload=function(){
+		div1=document.getElementById("div1");
+		aInput=div1.getElementsByTagName("input");
+		aDiv=div1.getElementsByTagName("div");
+
+		init();
+	}
+	function init(){
+		for(var i=0;i<aInput.length;i++){
+			aInput[i].index=i;
+			aInput[i].onclick=change;
+		}
+	}
+	function change(){
+		for(var i=0;i<aInput.length;i++){
+					aInput[i].className="";
+					aDiv[i].style.display="none";
+				}
+		this.className="active";
+		aDiv[this.index].style.display="block";
+	}*/
+	window.onload=function(){
+		var start=new Tab("div1");
+		start.init();
+		var auto=new Tab("div2");
+		auto.init();
+		auto.autoplay();
+	}
+	function Tab(id){
+		this.iNow=0;
+		this.div1=document.getElementById(id);
+		this.aInput=this.div1.getElementsByTagName("input");
+		this.aDiv=this.div1.getElementsByTagName("div");
+	}
+	Tab.prototype.init=function(){
+		var This=this;
+		for(var i=0;i<this.aInput.length;i++){
+			this.aInput[i].index=i;
+			this.aInput[i].onclick=function(){	
+				This.change(this);
+		}
+	  }
+    }
+	Tab.prototype.change=function(obj){
+		for(var i=0;i<this.aInput.length;i++){
+					this.aInput[i].className="";
+					this.aDiv[i].style.display="none";
+				}
+		obj.className="active";
+		this.aDiv[obj.index].style.display="block";
+	}
+	Tab.prototype.autoplay=function(){
+		var This=this;
+		setInterval(function(){
+			if(This.iNow==This.aInput.length-1){
+				This.iNow=0;
+			}else{
+				This.iNow++;
+			}
+			for(var i=0;i<This.aInput.length;i++){
+					This.aInput[i].className="";
+					This.aDiv[i].style.display="none";
+				}
+		This.aInput[This.iNow].className="active";
+		This.aDiv[This.iNow].style.display="block";
+		},1000)
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input class="active" value="选项卡1" type="button" />
+		<input value="选项卡3" type="button" />
+		<input value="选项卡3" type="button" />
+		<div style="display:block;">11111111</div>
+		<div>22222222</div>
+		<div>33333333</div>
+	</div>
+	<div id="div2">
+		<input class="active" value="选项卡1" type="button" />
+		<input value="选项卡3" type="button" />
+		<input value="选项卡3" type="button" />
+		<div style="display:block;">11111111</div>
+		<div>22222222</div>
+		<div>33333333</div>
+	</div>
+</body>
+</html>

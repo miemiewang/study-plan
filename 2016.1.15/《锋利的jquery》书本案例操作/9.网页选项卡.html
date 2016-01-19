@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.tab{}
+		ul{list-style:none;}
+		li{border:1px solid #000;display:inline-block;margin:5px;padding:5px;}
+		.box div{width:250px;height:200px;border:1px solid orange;}
+		.num2,.num3{display:none;}
+		.active{background:orange;color:#fff;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('ul li').click(function(){
+				$(this).addClass('active');
+				$(this).siblings().removeClass('active');
+				$('.box div').eq($(this).index('li')).show(400);
+				$('.box div').eq($(this).index('li')).siblings().hide(400);
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class='tab'>
+		<div class='tab_menu'>
+			<ul>
+				<li class='active'>时事</li>
+				<li>体育</li>
+				<li>娱乐</li>
+			</ul>
+		</div>
+	</div>
+	<div class='box'>
+		<div class='num1'>时事</div>
+		<div class='num2'>体育</div>
+		<div class='num3'>娱乐</div>
+	</div>
+</body>
+</html>

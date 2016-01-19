@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var str='aabdhhhhaahkklawwaaaawwgwwwwaaa';
+			var mes=str.split('');
+			var Msg=mes.sort().join('');
+			//alert(Msg);
+			var index=0;
+			var value=''
+			var re=/(\w)\1+/g;
+			Msg.replace(re,function($0,$1){
+				if(index<$0.length){
+					index=$0.length;
+					value=$1;
+				}
+			})
+			alert('最长的字符为：'+value+' 长度为:'+index);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

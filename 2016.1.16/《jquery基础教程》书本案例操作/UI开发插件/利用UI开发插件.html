@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	h3{
+		
+	}
+		thead{
+			color:#fff;
+			background:#000;
+		}
+		th{
+			text-align:left;
+		}
+	</style>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script src='jquery-ui.js'></script>
+	<script>
+		(function($){
+			$.widget('1jq.tooltip',{
+				options:{
+					offsetX:10,
+					offsetY:10,
+					content:function(){
+						return $(this).data('tooltip-text');
+					}
+				},
+				_create:function(){
+					this._tooltipDiv=$('<div></div>')
+						.addClass('1jq-tooltip-text'+'ui-widget ui-state-highlight ui-corner-all')
+						.hide().appendTo('body');
+					this.element
+						.addClass('1jq-tooltip-trigger')
+						.on('mouseenter.1jq-tooltip',
+							$.proxy(this._open,this))
+						.on('mouseleave.1jq-tooltip',
+							$.proxy(this._close,this));
+				},
+				destroy:function(){
+					this._tooltipDiv.remove();
+					this.element
+						.removeClass('1jq-tooltip-trigger')
+						.off('.1jq-tooltip');
+					$.widget.prototype.destroy.apply(this,arguments);
+				},
+				_open:function(){
+					if(!this.options.disabled){
+						var elementOffset=this.element.offset();
+					this._tooltipDiv.css({
+						position:'absolute',
+						left:elementOffset.left+this.options.offsetX,
+						top:elementOffset.top+this.element.height()+this.options.offsetY
+					}).text(this.options.content.call(this.element[0]));
+					this._tooltipDiv.show();
+					}
+					this._trigger('open');
+				},
+				_close:function(){
+					this._tooltipDiv.hide();
+					this._trigger('close');
+				}
+			})
+		})(jQuery)
+		$(function(){
+			$('a').tooltip('destroy');
+		})
+	</script>
+</head>
+<body>
+	<h3 class='title'>Inventory</h3>
+	<table id='inventory'>
+		<thead>
+			<tr class='one'><th>product</th><th>quantity</th><th>price</th></tr>
+		</thead>
+		<tbody>
+			<tr><td><a href='span.html' title='very good' data-tooltip-text='Nutritious and delicious'>spam</a></td><td>4</td><td>2.5</td></tr>
+			<tr><td><a href='egg.html' data-tooltip-text='Farm fresh or scrambled'>egg</a></td><td>12</td><td>4.32</td></tr>
+			<tr><td><a href='gourmet-span.html' data-tooltip-text="Chef Herman's recipe">gourmet spam</a></td><td>14</td><td>7.89</td></tr>
+		</tbody>
+		<tfoot>
+			<tr class='two' id='sum'><td>total</td><td></td><td></td></tr>
+			<tr id='average'><td>average</td><td></td><td></td></tr>
+		</tfoot>
+	</table>
+</body>
+</html>

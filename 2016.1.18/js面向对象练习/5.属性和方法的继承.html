@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload=function(){
+		function a(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		a.prototype={
+			showName:function(){
+				alert(this.name);
+			}
+		}
+		function b(name,age,job){
+			a.call(this,name,age);
+			this.job=job;
+		}
+		//b.prototype=new a();
+		extend(b.prototype,a.prototype);
+		b.prototype.showJob=function(){
+			alert(this.job);
+		}
+		var fn1=new a("wangy","20");
+		var fn2=new b("wangd","20","worker");
+		fn1.showName();
+		fn2.showName();
+		fn2.showJob();
+		function extend(obj1,obj2){
+			for(var attr in obj2){
+				obj1[attr]=obj2[attr];
+			}
+		}
+		/*function Person(){
+
+		}
+		var friend=new Person();
+		Person.prototype={
+			constructor:"Person",
+			name:"nana",
+			sayName:function(){
+				alert(this.name);
+			}
+		}
+
+		friend.sayName();*/
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

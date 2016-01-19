@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+window.onload=function(){
+	var arr=[3,1,2];
+	Array.prototype.push=function(){
+		for(var i=0;i<arguments.length;i++){
+			arr[arr.length]=arguments[i];
+		}
+		return arr.length;
+	}
+	//arr.push(4,5,6);
+	arr.sort();
+	alert(arr);
+}
+</script>
+<body>
+	
+</body>
+</html>

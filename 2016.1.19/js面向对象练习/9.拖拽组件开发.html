@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{height:100px;width:100px;position:absolute;background:red;margin:0;padding:0;}
+	#div2{height:100px;width:100px;position:absolute;background:yellow;margin:0;padding:0;left:100px;}
+	#div3{height:100px;width:100px;position:absolute;background:blue;margin:0;padding:0;left:200px;}
+	#div4{height:100px;width:100px;position:absolute;background:green;margin:0;padding:0;left:300px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var fn1=new Tab();
+		fn1.init({//配置参数
+			id:"div1"
+		});
+		var fn2=new Tab();
+		fn2.init({//配置参数
+			id:"div2",
+			todown:function(){
+				document.title="hello";
+			}
+		});
+		var fn3=new Tab();
+		fn3.init({//配置参数
+			id:"div3",
+			todown:function(){
+				document.title="byebye";
+			},
+			toup:function(){
+				document.title="world";
+			}
+		});
+		var fn4=new Tab();
+		fn4.init({//配置参数
+			id:"div4",
+			toup:function(){
+				document.title="sleep";
+			}
+		});
+	}
+	function Tab(){
+		this.oDiv=null;
+		this.disX=0;
+		this.disY=0;
+		this.show={//默认参数
+			todown:function(){},
+			toup:function(){}
+		}
+	}
+	Tab.prototype.init=function(opt){
+		var This=this;
+		this.oDiv=document.getElementById(opt.id);
+		extend(this.show,opt);//将配置参数赋值给默认参数
+		this.oDiv.onmousedown=function(ev){	
+			var ev=window.event||ev;		
+			This.fndown(ev);
+			This.show.todown();//有配置参数走配置参数，没有则走默认参数
+			return false;
+		}
+	}
+	Tab.prototype.fndown=function(ev){
+		var This=this;
+		this.disX=ev.clientX-this.oDiv.offsetLeft;
+		this.disY=ev.clientY-this.oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var ev=window.event||ev;	
+			This.fnmove(ev);
+			alert(This==Tab.prototype);
+		};
+		document.onmouseup=function(){
+			This.fnup();
+			This.show.toup();
+		};
+	}
+	Tab.prototype.fnmove=function(ev){
+		
+		this.oDiv.style.left=ev.clientX-this.disX+'px';
+		this.oDiv.style.top=ev.clientY-this.disY+'px';
+	}
+	Tab.prototype.fnup=function(){
+		document.onmousemove=null;
+		document.onmouseup=null;
+	}
+	function extend(obj1,obj2){
+		for(var attr in obj2){
+			obj1[attr]=obj2[attr];
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{padding:0;margin:0;}
+		ul{list-style:none;}
+		img{width:200px;height:150px;}
+		li{display:inline-block;margin:10px;border:1px solid #000;height:150px;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('a.tip').mouseover(function(ev){
+				this.myTitle=this.title;
+				this.title='';
+				var remind=$('<div class="remind"><img src='+this.href+' /><p>'+this.myTitle+'</p></div>');
+				$('body').append(remind);
+				$('.remind').css({
+					'position':'absolute',
+					'top':ev.pageY+10,
+					'left':ev.pageX+10,
+					'width':400,
+					'height':300
+				}).show('fast');
+				$('.remind img').css({
+					'width':400,
+					'height':300
+				})
+			})
+			$('a.tip').mouseout(function(){
+				this.title=this.myTitle;
+				$('.remind').remove();
+			})
+			$('a.tip').mousemove(function(ev){
+				$('.remind').css({
+					'top':ev.pageY+10,
+					'left':ev.pageX+10
+				})
+			})
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li><a href='1.jpg' class='tip' title='动漫1'><img src='1.jpg' /></a></li>
+		<li><a href='2.jpg' class='tip' title='动漫1'><img src='2.jpg' /></a></li>
+		<li><a href='3.jpg' class='tip' title='动漫1'><img src='3.jpg' /></a></li>
+		<li><a href='4.jpg' class='tip' title='动漫1'><img src='4.jpg' /></a></li>
+	</ul>
+</body>
+</html>
