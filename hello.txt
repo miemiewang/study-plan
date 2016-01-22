@@ -1,2 +1,0 @@
-git is free
-git is connected with github
