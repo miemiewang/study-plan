@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+input[type="text"]{height:30px;width:600px;}
+div{height:400px;width:600px;border:1px solid #F33;border-radius:5px;}
+span{background:yellow;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName("input");
+	var oUl=document.getElementById("liuyan");
+	var aLi=oUl.getElementsByTagName("li");
+	
+	oBtn[1].onclick=function(){		
+		//点击插入留言
+		var oLi=document.createElement("li");
+		oLi.innerHTML=oBtn[0].value;
+		if(oUl.children[0]){
+			oUl.insertBefore(oLi,oUl.children[0]);
+		}else{
+			oUl.appendChild(oLi);
+		}
+		oBtn[0].value='';
+		
+		//利用逆序一次性删除多个节点；
+		 oBtn[2].onclick=function(){
+				for(var j=aLi.length-1;j>=0;j--){
+			        if(aLi[j].style.background=="yellow"){
+				      oUl.removeChild(aLi[j]);			
+			   }
+		      }
+			  //问题解决办法
+			  for(var num=0;num<aLi.length;num++){
+				  aLi[num].x=num;
+			        //点击添加背景颜色
+			        aLi[num].onclick=function(){
+				    aLi[this.x].style.background="yellow";
+				    //批量删除留言
+					this.x='';
+					}
+			  }
+		
+		 }
+		 //问题：删除节点后，实际节点位置发生变化，而页面中位置未发生改变，导致位置错乱
+		 for(var i=aLi.length-1;i>=0;i--){
+		        	aLi[i].index=i;
+			        //点击添加背景颜色
+			        aLi[i].onclick=function(){
+				    aLi[this.index].style.background="yellow";
+				    //批量删除留言
+					this.index='';
+			}
+		}
+	}
+   
+}
+</script>
+</head>
+
+<body>
+<input type="text" /><input type="button" value="留言" /><input type="button" value="批量删除" />
+<h2>留言板</h2>
+<div id="div1">
+<ul id="liuyan">
+</ul>
+</div>
+</body>
+</html>

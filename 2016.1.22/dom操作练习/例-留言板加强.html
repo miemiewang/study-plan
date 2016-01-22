@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+input[type="text"]{height:30px;width:600px;}
+div{height:400px;width:600px;border:1px solid #F33;border-radius:5px;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName("input");
+	var div1=document.getElementById("div1");
+	var oUl=document.getElementById("liuyan");
+	oBtn[1].onclick=function(){
+		var oLi=document.createElement("li");
+		oLi.innerHTML=oBtn[0].value;
+		if(oUl.children[0]){
+			oUl.insertBefore(oLi,oUl.children[0]);
+		}else{
+			oUl.appendChild(oLi);
+		}
+		oBtn[0].value='';
+		if(oUl.getElementsByTagName("li").length>5){
+			oUl.removeChild(oUl.children[5]);
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="text" /><input type="button" value="留言" />
+<h2>留言板</h2>
+<div id="div1">
+<ul id="liuyan">
+</ul>
+</div>
+</body>
+</html>
