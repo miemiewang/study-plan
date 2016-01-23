@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var ul1=document.getElementById("ul1");
+	var oLi=ul1.getElementsByTagName("li")[2]; 
+	var aLi=removeClassName("box",oLi);
+	
+	function addClassName(className,obj){
+		
+		if(obj.className==''){
+			obj.className=className;
+		}else{
+			var aName=obj.className.split(' ');
+			var index=arrIndexOf(aName,className);
+			if(index==-1){
+			obj.className+=' '+className;
+			}
+		}
+	}
+	function removeClassName(className,obj){
+		if(obj.className!=''){
+		    var aName=obj.className.split(' ');
+			var index=arrIndexOf(aName,className);
+			if(index!=-1){
+				aName.splice(index,1);
+				obj.className=aName.join(' ');
+				
+			}
+		}
+	}
+	function arrIndexOf(arr,v){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==v){
+				return i;
+			}
+		}
+		return -1;
+	}
+	/*for(var i=0;i<aLi.length;i++){
+		aLi[i].style.background="red";
+	}
+	function getElementsByClassName(className,parent,tagName){
+		var arr=[];
+		var aEls=parent.getElementsByTagName(tagName);
+		var aName=className.split(',');
+		//alert(aName);
+		for(var i=0;i<aEls.length;i++){
+			var aClassName=aEls[i].className.split(' ');
+			for(var j=0;j<aClassName.length;j++){
+				if(aClassName[j]==aName[0]||aClassName[j]==aName[1]){
+					arr.push(aEls[i]);
+					break;
+				}
+			}
+		}
+		return arr;
+	}*/
+	
+}
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+<li class="box1">111</li>
+<li class="box box2 box3">222</li>
+<li>333</li>
+<li class="box">444</li>
+</ul>
+<ul id="ul2">
+<li class="box1">111</li>
+<li class="box box2">222</li>
+<li>333</li>
+<li class="box">444</li>
+</ul>
+<div class="box box1">hahahahha</div>
+</body>
+</html>

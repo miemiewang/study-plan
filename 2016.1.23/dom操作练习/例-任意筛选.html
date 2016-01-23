@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ul li{list-style:none;}
+</style>
+<script>
+window.onload=function(){
+	var aUl=document.getElementsByTagName("ul");
+	var li4=aUl[3].getElementsByTagName("li");
+	
+	for(var i=0;i<3;i++){
+		var oLi=document.createElement("li");
+		aUl[3].appendChild(oLi);
+		
+	}
+	
+		
+		var aLi1=aUl[0].getElementsByTagName("li");
+		for(var j=0;j<aLi1.length;j++){
+			aLi1[j].index=j;
+			aLi1[j].onclick=function(){
+				li4[0].innerHTML=aLi1[this.index].innerHTML;
+			}
+			}
+		var aLi2=aUl[1].getElementsByTagName("li");
+		for(var j=0;j<aLi2.length;j++){
+			aLi2[j].index=j;
+			aLi2[j].onclick=function(){
+				li4[1].innerHTML=aLi2[this.index].innerHTML;
+			}
+			}
+	    var aLi3=aUl[2].getElementsByTagName("li");
+		for(var j=0;j<aLi3.length;j++){
+			aLi3[j].index=j;
+			aLi3[j].onclick=function(){
+				li4[2].innerHTML=aLi3[this.index].innerHTML;
+			}
+			}
+		
+	
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+<span>职位</span>
+<ul>
+<li>前端工程师</li>
+<li>网站前端页面设计</li>
+<li>高级web前端工程师</li>
+<li>HTML5前端工程师</li>
+</ul>
+</div>
+<div id="div2">
+<span>工作地点</span>
+<ul>
+<li>北京月坛</li>
+<li>朝阳</li>
+<li>北京海淀</li>
+<li>东城</li>
+</ul>
+</div>
+<div id="div3">
+<span>薪酬</span>
+<ul>
+<li>4000</li>
+<li>6000</li>
+<li>8000</li>
+</ul>
+</div>
+<ul>
+</ul>
+</body>
+</html>

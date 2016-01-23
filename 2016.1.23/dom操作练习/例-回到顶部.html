@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+div{position:fixed;height:150px;width:150px;background:red;right:0;top:500px;display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName("div")[0];
+	
+	window.onscroll=function(){
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	scrollTop==0?oDiv.style.display="none":oDiv.style.display="block";
+	}
+}
+</script>
+</head>
+
+<body style="height:2000px;">
+<div></div>
+</body>
+</html>

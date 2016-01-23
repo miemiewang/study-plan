@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+.main{color:#0C0;}
+p{margin-top:50px;}
+div{height:25px;width:110px;position:absolute;border:1px solid #999;text-align:center;line-height:25px;display:none;background:#F63;color:#fff;}
+</style>
+<script>
+window.onload=function(){
+	var aSpan=document.getElementsByTagName("span");
+	var oDiv=document.getElementsByTagName("div")[0];
+	//为所有的span加上main
+	for(var i=0;i<aSpan.length;i++){
+		var span=addClassName("main",aSpan[i]);        
+	}
+	//遍历span并调用获取距离函数
+	for(var j=0;j<aSpan.length;j++){
+		aSpan[j].index=j;
+		aSpan[j].onmouseover=function(){
+			var pos=getPos(aSpan[this.index]);
+			oDiv.style.display="block";
+			oDiv.style.left=pos.left+15+'px';
+			oDiv.style.top=(pos.top-30)+'px';
+			oDiv.innerHTML=aSpan[this.index].innerHTML;
+		}
+		aSpan[j].onmouseout=function(){
+			oDiv.style.display="none";
+		}
+		
+	}
+	function getPos(obj) {		
+		var pos = {left:0, top:0};		
+		while (obj) {
+			pos.left += obj.offsetLeft;
+			pos.top += obj.offsetTop;
+			obj = obj.offsetParent;
+		}		
+		return pos;		
+	}
+	function addClassName(className,obj){
+		
+		if(obj.className==''){
+			obj.className=className;
+		}else{
+			var aName=obj.className.split(' ');
+			var index=arrIndexOf(aName,className);
+			if(index==-1){
+			obj.className+=' '+className;
+			}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<p>
+<span>JavaScriptDOM</span>编程艺术
+<span>JavaScriptDOM</span>编程艺术，作者英国人Jeremy Keith，人民邮电出版社2007年
+出版。本书<br/>共分12章，讲述<span>JavaScript</span>和<span>DOM</span>的基本知识，重点放在<span>DOM</span>编程技术背后的思路和原则，并通过几个实例演示
+<br/>了大师级的网页开发技术，本书适合Web设计师和开发人员阅读。
+</p>
+<div>1</div>
+</body>
+</html>
