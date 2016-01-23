@@ -21,3 +21,5 @@
 ####[2016.1.23](https://github.com/miemiewang/study-plan/tree/master/2016.1.23)
 
 ####[一周推荐文章阅读总结](https://github.com/miemiewang/study-plan/blob/master/%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/%E4%B8%80%E5%91%A8%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93.md)
+
+####[angular学习笔记](https://github.com/miemiewang/study-plan/tree/master/angular%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0)
