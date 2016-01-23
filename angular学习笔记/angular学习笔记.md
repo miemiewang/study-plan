@@ -7,7 +7,7 @@
 * 依赖注入
 * 双向数据绑定
 
-####2.anggular指令系统
+####2.angular指令系统
 * ng-app
 * ng-controller
 
