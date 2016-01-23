@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+        <script>
+        	function Aaa($scope,$rootScope){//$scope为局部变量，$rootScope为全局变量
+        		$scope.name='hello';//依赖注入，形参不能随便修改
+        		$rootScope.age=20;
+        	}
+        	function Bbb($scope){
+        		$scope.name='world'; 
+        		$scope.age=30;     		
+        	}
+        	function Ccc($scope){
+        		alert(123);
+        	}
+        </script>
+    </head>
+    <body>
+    	<div ng-controller='Aaa'>
+			<p>{{name}}</p>
+    	</div>
+    	<div ng-controller='Bbb'>
+			<p>{{name}}</p>	
+			<p>{{age}}</p><!-- 首先会在局部查找 -->
+    	</div>
+    	<div ng-controller='Ccc'>
+
+    	</div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+        <script>
+        function Aaa($scope,$timeout){
+        	$scope.name='hello';
+        	/*$timeout(function(){
+        		$scope.name='hi';
+        	},2000);*/
+        	$scope.show=function() {
+        		$scope.name='hi';
+        	}
+        }
+        </script>
+    </head>
+    <body>
+       <!-- <div ng-controller='Aaa' ng-click='name="hi"'> -->
+       <div ng-controller='Aaa' ng-click='show()'>
+       	{{name}}
+       </div>
+    </body>
+</html>
