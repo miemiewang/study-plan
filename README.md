@@ -6,7 +6,7 @@
 
 #####任务二：逛一小时社区，看博客（每天至少1小时）
 
-####时间　　　　　　　　　　　  　读书笔记　　　　　　　　　　　　　　　  代码练习
+#####时间　　　　　　　　　　　  　读书笔记　　　　　　　　　　　　　　　  代码练习
 #####[2016.1.14](https://github.com/miemiewang/study-plan/tree/master/2016.1.14)　　　　　　[《js高程》第二章 &lt;script>使用](https://github.com/miemiewang/study-plan/blob/master/2016.1.14/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E3%80%8B%E6%A2%B3%E7%90%86.md)　　　　　　　[数组字符串方法运用](https://github.com/miemiewang/study-plan/blob/master/2016.1.14/js%E4%B8%AD%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E6%89%BE%E5%87%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6.md)
 
 #####[2016.1.15](https://github.com/miemiewang/study-plan/tree/master/2016.1.15)　　　　　　[《js高程》第三章 基本概念](https://github.com/miemiewang/study-plan/blob/master/2016.1.15/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　　 [《锋利的jquery》案例操作](https://github.com/miemiewang/study-plan/tree/master/2016.1.15/%E3%80%8A%E9%94%8B%E5%88%A9%E7%9A%84jquery%E3%80%8B%E4%B9%A6%E6%9C%AC%E6%A1%88%E4%BE%8B%E6%93%8D%E4%BD%9C)
@@ -22,10 +22,10 @@
 
 #####任务二：逛社区，看博客（每天至少1小时）
 
-####时间　　　　　　　　　　　  　读书笔记　　　　　　　　　　　　　　　 代码练习　　　　　　　　　　
+#####时间　　　　　　　　　　　  　读书笔记　　　　　　　　　　　　　　　 代码练习　　　　　　　　　　
 #####[2016.1.18](https://github.com/miemiewang/study-plan/tree/master/2016.1.18)　　　　　　[《js高程》第六章 面向对象](https://github.com/miemiewang/study-plan/blob/master/2016.1.18/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　　 　　[面向对象编程](https://github.com/miemiewang/study-plan/tree/master/2016.1.18/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%83%E4%B9%A0)
 
-####[2016.1.19](https://github.com/miemiewang/study-plan/tree/master/2016.1.19)　　　　　　[《js高程》第七章 函数表达式](https://github.com/miemiewang/study-plan/blob/master/2016.1.19/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC%E4%B8%83%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　 　　[面向对象编程](https://github.com/miemiewang/study-plan/tree/master/2016.1.19/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%83%E4%B9%A0)
+#####[2016.1.19](https://github.com/miemiewang/study-plan/tree/master/2016.1.19)　　　　　　[《js高程》第七章 函数表达式](https://github.com/miemiewang/study-plan/blob/master/2016.1.19/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC%E4%B8%83%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　 　　[面向对象编程](https://github.com/miemiewang/study-plan/tree/master/2016.1.19/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%83%E4%B9%A0)
 
 #####[2016.1.20](https://github.com/miemiewang/study-plan/tree/master/2016.1.20)　　　　　　[《js高程》第八章 ＢＯＭ](https://github.com/miemiewang/study-plan/blob/master/2016.1.20/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC%E5%85%AB%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　　　 　　[Bom代码练习](https://github.com/miemiewang/study-plan/tree/master/2016.1.20/BOM%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0)
 
