@@ -35,6 +35,8 @@
 
 #####[2016.1.23](https://github.com/miemiewang/study-plan/tree/master/2016.1.23)　　　　　　[《js高程》第十一章 ＤＯＭ扩展](https://github.com/miemiewang/study-plan/blob/master/2016.1.23/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　 　　 [Dom代码练习](https://github.com/miemiewang/study-plan/tree/master/2016.1.23/dom%E6%93%8D%E4%BD%9C%E7%BB%83%E4%B9%A0)
 
+#####[2016.1.24](https://github.com/miemiewang/study-plan/tree/master/2016.1.24)　　　　　　[《js高程》第十二章 ＤＯＭ２和ＤＯＭ３](https://github.com/miemiewang/study-plan/blob/master/2016.1.24/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)
+
 ####博客阅读
 #####[一周推荐文章阅读总结](https://github.com/miemiewang/study-plan/blob/master/%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/%E4%B8%80%E5%91%A8%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93.md)
 
