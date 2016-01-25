@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+div{height:100px;width:100px;position:absolute;background:red;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName("div")[0];
+	var oBtn=document.getElementsByTagName("input")[0];
+	var dragIf=false;
+	var disX=0;
+	var disY=0;
+	var position=[{x:oDiv.offsetLeft,y:oDiv.offsetTop}];//实现记录和回放的关键
+	oDiv.onmousedown=function(ev){
+		var ev=ev||event;
+		disX=ev.clientX-oDiv.offsetLeft;
+		disY=ev.clientY-oDiv.offsetTop;
+		dragIf=true;//可以进行拖拽的标志
+		position.push({x:oDiv.offsetLeft,y:oDiv.offsetTop});//记录开始
+		//alert(oDiv.offsetLeft);
+		document.onmousemove=function(ev){
+			if(!dragIf)return;//只有按下的移动才有效
+			var ev=ev||event;
+			var L=ev.clientX-disX;
+			var H=ev.clientY-disY;
+			if(L<0){
+				L=0;
+			}
+			if(H<0){
+				H=0;
+			}
+			oDiv.style.left=L+'px';
+			oDiv.style.top=H+'px';
+			position.push({x:L,y:H});//不停的记录
+			oDiv.innerHTML="x:"+L+"y:"+H;
+		}
+		document.onmouseup=function(){
+			dragIf=false;//不允许进行记录
+			document.onmouseup=document.onmousemove=null;
+		}
+		return false;
+	}
+	oBtn.onclick=function(){
+		if(position.length==1)return;
+		var timer=setInterval(function(){
+		var oPos=position.pop();//数组的pop方法用于删除并返回数组的最后一个元素
+		oPos?(oDiv.style.left=oPos.x+'px',oDiv.style.top=oPos.y+'px'):clearInterval(timer);	
+		return false;
+		},20);
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="拖拽回放" /><br/>
+<div></div>
+</body>
+</html>

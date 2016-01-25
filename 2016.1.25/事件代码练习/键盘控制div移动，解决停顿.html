@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+div{height:200px;width:200px;background:red;position:absolute;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName("div")[0];
+	var left=false;
+	var right=false;
+	var top=false;
+	var bottom=false;
+	setInterval(function(){
+	if(left){
+	oDiv.style.left=oDiv.offsetLeft-10+'px';	
+	}else if(top){
+	oDiv.style.top=oDiv.offsetTop-10+'px';	
+	}else if(right){
+	oDiv.style.left=oDiv.offsetLeft+10+'px';	
+	}else if(bottom){
+	oDiv.style.top=oDiv.offsetTop+10+'px';	
+	}
+	},20);
+	
+	document.onkeydown=function(ev){
+		var ev=ev||event;
+		switch(ev.keyCode){
+		case 37:
+		left=true;
+		break;
+		case 38:
+	    top=true;
+		break;
+		case 39:
+		right=true;
+		break;
+		case 40:
+	    bottom=true;
+	    break;
+		
+	}
+	}
+	document.onkeyup=function(ev){
+		var ev=ev||event;
+		switch(ev.keyCode){
+		case 37:
+		left=false;
+		break;
+		case 38:
+		top=false;
+		break;
+		case 39:
+		right=false;
+		break;
+		case 40:
+		bottom=false;
+		break;	
+		}
+	}
+	
+	
+}
+
+</script>
+</head>
+
+<body>
+<div>
+</div>
+</body>
+</html>

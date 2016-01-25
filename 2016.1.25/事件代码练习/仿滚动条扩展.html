@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div0{height:500px;width:20px;background:#000;position:absolute;top:10px;left:10px;}
+#div1{height:20px;width:20px;position:absolute;top:0px;left:0px;background:red;}
+#div2{height:500px;width:550px;border:1px solid blue;position:absolute;left:30px;top:10px;font-size:20px;overflow:hidden;}
+#div3{position:absolute;}
+</style>
+<script>
+window.onload=function(){
+	var aDiv=document.getElementsByTagName("div");
+	//alert(aDiv[3].offsetHeight-aDiv[2].offsetHeight);
+	if(aDiv[3].offsetHeight<aDiv[2].offsetHeight||aDiv[3].offsetHeight==aDiv[2].offsetHeight){
+		aDiv[1].style.height=aDiv[0].offsetHeight+'px';
+	}else{
+		aDiv[1].style.height=250*(aDiv[2].offsetHeight/aDiv[3].offsetHeight)+'px';
+	}
+
+	var MT=aDiv[0].offsetHeight-parseInt(aDiv[1].style.height);
+	var disW=aDiv[2].offsetHeight-aDiv[3].offsetHeight;
+	
+	//alert(aDiv[1].style.height);
+	
+	aDiv[1].onmousedown=function(ev){
+		var ev=ev||event;
+		disx=ev.clientX-parseInt(aDiv[1].style.height);
+		disy=ev.clientY-aDiv[1].offsetTop;
+		//alert(aDiv[2].offsetHeight);
+		document.onmousemove=function(ev){
+		    var ev=ev||event;
+			var T=ev.clientY-disy;
+		
+			if(aDiv[1].style.height==aDiv[0].offsetHeight+'px'){
+				return false;
+			}
+			if(T<0){
+				T=0;
+			}else if(T>MT){
+				T=MT;
+			}
+			var iScale=disW*(T/MT);
+		    aDiv[1].style.top=T+'px';
+			aDiv[3].style.top=iScale+'px';	
+		    	
+		}
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+		}
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div0">
+<div id="div1">
+</div>
+</div>
+<div id="div2">
+<div id="div3">
+一、展示中国军事实力。通过阅兵，我国可以向世界展示人民解放军的军容、军貌、军心，可以向世界展示中国的军事装备实力。有了这些硬实力支撑，才能在国际博弈中让对手心有忌惮，才能让伙伴安心合作，才能在战略博弈时让形势往更有利于自己的方向发展。此时借机展示，内涵深刻，意义非凡。
+二、向世界宣示中国维持战后世界秩序的坚定决心。
+近些年，在美国重返亚太遏制中国战略的支撑下，日本的军国主义势力重新抬头且日益猖獗，不但将中国领土钓鱼岛“国有化”，还试图否认历史，否认对中国和对亚洲人民的侵略。如何遏制这些疯狂企图？只能通过展示自己的军事能力，表明中国的态度和决心，让日本知道事关中国的战后秩序绝不容许改变，谁侵害中国的核心利益，谁就是中国的敌人。
+三、凝聚国人信心，增加自豪感。
+此时进行大阅兵，展示军容、军貌、军心、军备，自然就会增加国人的自豪感，提升国人对国家安全的信心。在中国深化体制改革、经济结构转型时期，这种对国家的信心和自豪感尤为重要。本版综合整理
+背景资料编辑
+一、展示中国军事实力。通过阅兵，我国可以向世界展示人民解放军的军容、军貌、军心，可以向世界展示中国的军事装备实力。有了这些硬实力支撑，才能在国际博弈中让对手心有忌惮，才能让伙伴安心合作，才能在战略博弈时让形势往更有利于自己的方向发展。此时借机展示，内涵深刻，意义非凡。
+二、向世界宣示中国维持战后世界秩序的坚定决心。
+近些年，在美国重返亚太遏制中国战略的支撑下，日本的军国主义势力重新抬头且日益猖獗，不但将中国领土钓鱼岛“国有化”，还试图否认历史，否认对中国和对亚洲人民的侵略。如何遏制这些疯狂企图？只能通过展示自己的军事能力，表明中国的态度和决心，让日本知道事关中国的战后秩序绝不容许改变，谁侵害中国的核心利益，谁就是中国的敌人。
+三、凝聚国人信心，增加自豪感。
+此时进行大阅兵，展示军容、军貌、军心、军备，自然就会增加国人的自豪感，提升国人对国家安全的信心。在中国深化体制改革、经济结构转型时期，这种对国家的信心和自豪感尤为重要。本版综合整理
+背景资料编辑
+一、展示中国军事实力。通过阅兵，我国可以向世界展示人民解放军的军容、军貌、军心，可以向世界展示中国的军事装备实力。有了这些硬实力支撑，才能在国际博弈中让对手心有忌惮，才能让伙伴安心合作，才能在战略博弈时让形势往更有利于自己的方向发展。此时借机展示，内涵深刻，意义非凡。
+二、向世界宣示中国维持战后世界秩序的坚定决心。
+近些年，在美国重返亚太遏制中国战略的支撑下，日本的军国主义势力重新抬头且日益猖獗，不但将中国领土钓鱼岛“国有化”，还试图否认历史，否认对中国和对亚洲人民的侵略。如何遏制这些疯狂企图？只能通过展示自己的军事能力，表明中国的态度和决心，让日本知道事关中国的战后秩序绝不容许改变，谁侵害中国的核心利益，谁就是中国的敌人。
+三、凝聚国人信心，增加自豪感。
+此时进行大阅兵，展示军容、军貌、军心、军备，自然就会增加国人的自豪感，提升国人对国家安全的信心。在中国深化体制改革、经济结构转型时期，这种对国家的信心和自豪感尤为重要。本版综合整理
+背景资料编辑
+一、展示中国军事实力。通过阅兵，我国可以向世界展示人民解放军的军容、军貌、军心，可以向世界展示中国的军事装备实力。有了这些硬实力支撑，才能在国际博弈中让对手心有忌惮，才能让伙伴安心合作，才能在战略博弈时让形势往更有利于自己的方向发展。此时借机展示，内涵深刻，意义非凡。
+二、向世界宣示中国维持战后世界秩序的坚定决心。
+近些年，在美国重返亚太遏制中国战略的支撑下，日本的军国主义势力重新抬头且日益猖獗，不但将中国领土钓鱼岛“国有化”，还试图否认历史，否认对中国和对亚洲人民的侵略。如何遏制这些疯狂企图？只能通过展示自己的军事能力，表明中国的态度和决心，让日本知道事关中国的战后秩序绝不容许改变，谁侵害中国的核心利益，谁就是中国的敌人。
+三、凝聚国人信心，增加自豪感。
+此时进行大阅兵，展示军容、军貌、军心、军备，自然就会增加国人的自豪感，提升国人对国家安全的信心。在中国深化体制改革、经济结构转型时期，这种对国家的信心和自豪感尤为重要。本版综合整理
+背景资料编辑
+一、展示中国军事实力。通过阅兵，我国可以向世界展示人民解放军的军容、军貌、军心，可以向世界展示中国的军事装备实力。有了这些硬实力支撑，才能在国际博弈中让对手心有忌惮，才能让伙伴安心合作，才能在战略博弈时让形势往更有利于自己的方向发展。此时借机展示，内涵深刻，意义非凡。
+二、向世界宣示中国维持战后世界秩序的坚定决心。
+近些年，在美国重返亚太遏制中国战略的支撑下，日本的军国主义势力重新抬头且日益猖獗，不但将中国领土钓鱼岛“国有化”，还试图否认历史，否认对中国和对亚洲人民的侵略。如何遏制这些疯狂企图？只能通过展示自己的军事能力，表明中国的态度和决心，让日本知道事关中国的战后秩序绝不容许改变，谁侵害中国的核心利益，谁就是中国的敌人。
+三、凝聚国人信心，增加自豪感。
+此时进行大阅兵，展示军容、军貌、军心、军备，自然就会增加国人的自豪感，提升国人对国家安全的信心。在中国深化体制改革、经济结构转型时期，这种对国家的信心和自豪感尤为重要。本版综合整理
+背景资料编辑
+</div>
+</div>
+</body>
+</html>
