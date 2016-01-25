@@ -40,4 +40,15 @@
 ####博客阅读
 #####[一周推荐文章阅读总结](https://github.com/miemiewang/study-plan/blob/master/%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/%E4%B8%80%E5%91%A8%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93.md)
 
+###第二周（1.25-1.31号）
 
+####任务一：《梳理js高级程序设计》12-18章，每天一章并总结重要知识点
+
+####任务二：逛社区，看博客（每天至少1小时）
+
+####任务三：学习fis构建工具（选做）
+
+####任务四：写博客（选做）
+
+#####时间　　　　　　　　　　　  　读书笔记　　　　　　　　　　　　　　　 代码练习　　　　　　　　　　
+#####[2016.1.25](https://github.com/miemiewang/study-plan/tree/master/2016.1.25)　　　　　　[《js高程》第十三章 事件](https://github.com/miemiewang/study-plan/blob/master/2016.1.25/%E3%80%8Ajs%E9%AB%98%E7%A8%8B%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0%E6%A2%B3%E7%90%86%E4%B8%8E%E5%88%86%E6%9E%90.md)　　　　　　　　 　　[事件代码练习](https://github.com/miemiewang/study-plan/tree/master/2016.1.25/%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%A0%81%E7%BB%83%E4%B9%A0)
