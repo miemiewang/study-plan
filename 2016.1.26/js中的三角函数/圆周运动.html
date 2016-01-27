@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{width:50px;height:50px;background:red;position:absolute;left:400px;top:300px;}
+		.mark{border:1px solid #000;position:absolute;top:300px;}
+	</style>
+</head>
+<body>
+	<div id='div1'></div>
+	<script>
+		window.onload=function(){
+			var div1=document.getElementById('div1');
+			var r=100;
+			var x=div1.offsetLeft-r;
+			var y=div1.offsetTop;
+			var iNum=0;
+			//alert(y);
+			setInterval(move,30);
+			function move(){
+				iNum++;
+				div1.style.left=x+Math.cos(iNum*Math.PI/180)*r+'px';
+				//div1.style.top=y+Math.sin(iNum*Math.PI/180)*r+'px';
+				div1.style.width=(Math.sin(iNum*Math.PI/180)*r)/100*30+50+'px';
+				div1.style.height=(Math.sin(iNum*Math.PI/180)*r)/100*30+50+'px';
+				/*var box=document.createElement('div');
+				box.className='mark';
+				box.style.left=x+Math.cos(iNum*Math.PI/180)*r+'px';
+				//box.style.top=y+Math.sin(iNum*Math.PI/180)*r+'px';
+				box.style.width=(Math.sin(iNum*Math.PI/180)*r)/100*30+50+'px';
+				box.style.height=(Math.sin(iNum*Math.PI/180)*r)/100*30+50+'px';
+				document.body.appendChild(box);*/
+			}
+		}
+	</script>
+</body>
+</html>

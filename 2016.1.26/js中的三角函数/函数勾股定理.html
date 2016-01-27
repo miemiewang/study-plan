@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		img{width:64px;}
+		#div1{width:100%;position:absolute;bottom:0;text-align:center;}
+	</style>
+</head>
+<body>
+	<div id='div1'>
+		<img src='img/1.png' />
+		<img src='img/2.png' />
+		<img src='img/3.png' />
+		<img src='img/4.png' />
+		<img src='img/5.png' />
+	</div>
+	<script>
+		window.onload=function(){
+			var div1=document.getElementById('div1');
+			var aImg=div1.getElementsByTagName('img');
+			var aBtn=document.getElementsByTagName('input');
+			//alert(getPos(aImg[1]));
+			//求图片和鼠标的距离
+			
+			//alert(distance(aImg[0]));
+			distance();
+			function distance(){
+				document.onmousemove=function(ev){
+					var ev=event||ev;
+					for(var i=0;i<aImg.length;i++){
+						var a=ev.clientX-(aImg[i].offsetLeft+aImg[i].offsetWidth/2);
+						var b=ev.clientY-(getPos(aImg[i])+aImg[i].offsetHeight/2);
+						var c=Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+						//
+						var scale=1-c/350;
+						if(scale<=0.5){
+							scale=0.5;
+						}
+						aImg[i].style.width=128*scale+'px';
+						aImg[i].style.height=128*scale+'px';
+
+					}
+					
+				}
+				
+			}
+			//求得图片到可视区顶部的距离
+			function getPos(obj){
+				var getTop=obj.offsetTop;
+				while(obj.offsetParent){
+					obj=obj.offsetParent;
+					getTop+=obj.offsetTop;
+				}
+				return getTop;
+			}
+		}
+	</script>
+</body>
+</html>

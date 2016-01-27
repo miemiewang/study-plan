@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#div1{height:40px;width:40px;position:absolute;top:300px;left:300px;background:yellow;}
+	</style>
+</head>
+<body>
+	<div id='div1'></div>
+	<script>
+		window.onload=function(){
+			var div1=document.getElementById('div1');
+			var L=300;
+			var T=300;
+			var iNum=0;
+			var val=100;
+			//弧度控制left  sin控制top
+			setInterval(move,30);
+			function move(){
+				iNum++;
+				div1.style.left=L+(iNum*Math.PI/180)*val+'px';
+				div1.style.top=T-Math.sin(iNum*Math.PI/180)*val+'px';
+			}
+		}
+	</script>
+</body>
+</html>

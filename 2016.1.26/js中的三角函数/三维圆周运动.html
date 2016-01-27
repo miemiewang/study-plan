@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{padding:0;margin:0;}
+		body{width:100%;}
+		#div1{width:176px;height:91px;background:url(265.png)no-repeat;position:absolute;left:50%;-webkit-transform:translateX(-50%);top:100px;}
+		#div2{border:2px solid #000;position:absolute;left:115px;top:43px;border-radius:50%;}
+		#div3{border:2px solid #000;position:absolute;left:135px;top:43px;border-radius:50%;}
+	</style>
+</head>
+<body>
+	<div id='div1'>
+		<div id='div2'></div>
+		<div id='div3'></div>
+	</div>
+	<script>
+		window.onload=function(){
+			var div1=document.getElementById('div1');
+			var div2=document.getElementById('div2');
+			var div3=document.getElementById('div3');
+			var L1=115;
+			var L2=135;
+			var T=43;
+			var r=5;
+			var changeX=0;
+			var changeY=0;
+			document.onmousemove=function(ev){
+				var ev=ev||event;
+				rotate(div2,ev.clientX,ev.clientY,L1,T,r);
+				rotate(div3,ev.clientX,ev.clientY,L2,T,r);
+				function rotate(obj,x,y,L,T,r){
+					var a=Math.abs(x-(obj.offsetLeft+obj.parentNode.offsetLeft));
+					var b=Math.abs(y-(obj.offsetTop+obj.parentNode.offsetTop));
+					changeX=Math.sin(Math.atan(a/b))*r;
+					changeY=Math.cos(Math.atan(a/b))*r;
+					if(x>obj.offsetLeft+obj.parentNode.offsetLeft&&y<obj.offsetTop+obj.parentNode.offsetTop){
+						//右上
+						obj.style.left=changeX+L+'px';
+						obj.style.top=T-changeY+'px';
+					}else if(x>obj.offsetLeft+obj.parentNode.offsetLeft&&y>obj.offsetTop+obj.parentNode.offsetTop){
+						//右下
+						obj.style.left=changeX+L+'px';
+						obj.style.top=T+changeY+'px';
+					}else if(x<obj.offsetLeft+obj.parentNode.offsetLeft&&y>obj.offsetTop+obj.parentNode.offsetTop){
+						//左下
+						obj.style.left=L-changeX+'px';
+						obj.style.top=T+changeY+'px';
+					}else if(x<obj.offsetLeft+obj.parentNode.offsetLeft&&y<obj.offsetTop+obj.parentNode.offsetTop){
+						//左上
+						obj.style.left=L-changeX+'px';
+						obj.style.top=T-changeY+'px';
+					}
+					
+				}
+			}
+		}
+	</script>
+</body>
+</html>
