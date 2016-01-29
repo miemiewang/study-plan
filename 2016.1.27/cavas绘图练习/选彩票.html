@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName('input')[0];
+	var div1=document.getElementById('div1');
+	var json={};
+	oBtn.onclick=function(){
+		var iNow=Math.random();
+		var num=randomText(35,7);
+		json[iNow]=num;
+		div1.innerHTML=num;
+		window.location.hash=iNow;
+	}
+	window.onhashchange=function(){
+		div1.innerHTML=json[window.location.hash.substring(1)];
+	}
+	function randomText(allNum,sigNum){
+		var arr1=[];
+	    var arr2=[];
+		for(var i=1;i<=allNum;i++){
+			arr1.push(i);
+		}
+		
+		for(var i=0;i<sigNum;i++){
+			arr2.push(arr1.splice(Math.floor(Math.random()*arr1.length),1));
+		}
+		//alert(arr2);
+		return arr2;
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="选择" />
+<div id='div1'></div>
+</body>
+</html>
