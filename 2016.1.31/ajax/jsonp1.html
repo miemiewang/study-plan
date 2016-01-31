@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input{width:300px;height:40px;font-size:16px;border:1px solid orange;}
+		ul{list-style:none;padding:0;margin:0;border:1px solid orange;width:300px;display:none;}
+		li{font-size:16px;line-height:40px;}
+		a{text-decoration:none;color:#000;}
+		li:hover{background:orange;}
+	</style>
+	<script>
+	function fn(data){
+		var html='';
+		if(data.s.length){
+			for(var i=0;i<data.s.length;i++){
+				oUl.style.display='block';
+				html+='<li><a href="http://www.baidu.com/s?wd='+data.s[i]+'">'+data.s[i]+'</a></li>'
+			}
+			oUl.innerHTML=html;
+		}else{
+			oUl.style.display='none';
+		}
+	}
+	var oUl=null;
+	window.onload=function(){
+		
+		oUl=document.getElementsByTagName('ul')[0];
+		var oBtn=document.getElementsByTagName('input')[0];
+		oBtn.onkeyup=function(){
+			var oScript=document.createElement('script');
+			if(this.value!=''){
+				oScript.src='http://suggestion.baidu.com/su?wd='+this.value+'&cb=fn';
+				document.body.appendChild(oScript);
+			}else{
+				oUl.style.display='none';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type='text' />
+	<ul>
+		<li><a href='javascript:;'>11111111111111</a></li>
+		<li><a href='javascript:;'>222222222222</a></li>
+		<li><a href='javascript:;'>333333333333</a></li>
+		<li><a href='javascript:;'>44444444444444</a></li>
+	</ul>
+</body>
+</html>

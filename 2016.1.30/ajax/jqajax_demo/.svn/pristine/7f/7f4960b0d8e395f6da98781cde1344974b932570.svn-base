@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>others</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<h3>$.ajaxSetup(options) 设置全局默认参数</h3>
+<hr />
+<h3>$. ajaxPrefilter([dataTypes], handler(options, originalOptions, jqXHR)) </h3>
+<p>请求发起前的预处理，主要用途：</p>
+<p>1、根据options设定执行特定处理逻辑</p>
+<p>2、修改options值改变请求默认行为</p>
+<hr />
+<h3>全局事件：所有$.ajax执行时都触发的事件</h3>
+<p>error success complete</p>
+<p>start stop send</p>
+<hr />
+<h3>param、serialize、serializeArray</h3>
+<p>序列化</p>
+</body>
+</html>

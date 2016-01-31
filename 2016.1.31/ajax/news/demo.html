@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload=function(){
+		var list=document.getElementById("list");
+		var oBtn=document.getElementsByTagName("input")[0];
+		oBtn.onclick=function(){
+			ajax('get','getNews.php','',function(obj){
+				var data=JSON.parse(obj);
+				var html='';
+				for(var i=0;i<data.length;i++){
+					html+='<li>'+data[i].title+'</li>';
+				}
+				list.innerHTML=html;
+			})
+		}
+		function ajax(method,url,data,fn){
+			var xhr=new XMLHttpRequest();
+			if(method=="get"){
+				url+='?'+data;
+			}
+			xhr.open(method,url,true);
+			if(method=="post"){
+				xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+				xhr.send(data);
+			}else{
+				xhr.send();
+			}
+			xhr.onreadystatechange=function(){				
+				if(xhr.readyState===4){
+					if(xhr.status===200){
+						fn&&fn(xhr.responseText);
+					}else{
+						alert("出错啦，err:"+xhr.status);
+					}	
+				}
+			}	
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="生成新闻" />
+	<ul id="list"></ul>	
+</body>
+</html>

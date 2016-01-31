@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.content{background:#f5f5f5;}
+	</style>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$('input').click(function(){
+				$('#redTest').load('test.html h6');
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type='button' id='send' value='ajax获取'>
+	<div class='comment'>已有评论</div>
+	<div id='redTest'></div>
+</body>
+</html>

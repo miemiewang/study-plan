@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#piclist{width:1148px;border:1px solid #000;margin:100px auto;list-style:none;}
+		#piclist:after{content:"001";overflow:hidden;visibility:hidden;display:block;height:0;clear:both;}
+		img{width:245px;display:block;}
+		li{float:left;}
+		li div{border:1px solid #000;margin:10px;padding:10px;width:245px;}
+		div p{margin-top:10px;}
+	</style>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script src="ajax.js"></script>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementById("piclist");
+		var aLi=oUl.getElementsByTagName("li");
+		var len=aLi.length;
+		var iPage=1;
+		var onoff=true;
+		getData();
+		function getData(){
+			/*ajax('get','getPics.php','cpage='+iPage,function(data){
+				var data=JSON.parse(data);
+				console.log(data);
+				if(!data.length){
+					return;
+				}
+				for(var i=0;i<data.length;i++){
+					var min=getshort();
+					var oDiv=document.createElement("div");
+					var oImg=document.createElement("img");
+					oImg.src=data[i].preview;
+					oImg.style.width="245px";
+					oImg.style.height=data[i].height*(245/data[i].width)+'px';
+					oDiv.appendChild(oImg);
+					var oP=document.createElement("p");
+					oP.innerHTML=data[i].title;
+					oDiv.appendChild(oP);
+					aLi[min].appendChild(oDiv);
+				}	
+				onoff=true;
+			});*/
+			$.get('getPics.php','cpage='+iPage,function(data){
+				var data=JSON.parse(data);
+				console.log(data);
+				if(!data.length){
+					return;
+				}
+				for(var i=0;i<data.length;i++){
+					var min=getshort();
+					var oDiv=document.createElement("div");
+					var oImg=document.createElement("img");
+					oImg.src=data[i].preview;
+					oImg.style.width="245px";
+					oImg.style.height=data[i].height*(245/data[i].width)+'px';
+					oDiv.appendChild(oImg);
+					var oP=document.createElement("p");
+					oP.innerHTML=data[i].title;
+					oDiv.appendChild(oP);
+					aLi[min].appendChild(oDiv);
+				}	
+				onoff=true;
+			})
+		}
+		/*window.onscroll=function(){
+			var min=getshort();
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			if(getTop(aLi[min])+aLi[min].offsetHeight < document.documentElement.clientHeight+scrollTop){
+				if( onoff ){
+					onoff = false;
+					iPage++;
+					getData();
+				}
+			}
+		}
+		function getshort(){
+			var index=0;
+			var aHeight=aLi[index].offsetHeight;
+			for(var i=0;i<len;i++){
+				if(aLi[i].offsetHeight<aHeight){
+					index=i;
+					aHeight=aLi[i].offsetHeight;
+				}
+			}
+			return index;
+		}
+		function getTop(obj){
+			var iTop=0;
+			while(obj){
+				iTop+=obj.offsetHeight;
+				obj=obj.offsetParent;
+			}
+			return iTop;
+		}*/
+		window.onscroll = function() {
+		
+		var min = getshort();
+		var oLi = aLi[min];
+		
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		
+		if ( getTop( oLi ) + oLi.offsetHeight < document.documentElement.clientHeight + scrollTop ) {
+			
+			if ( onoff ) {
+				onoff = false;
+				iPage++;
+				getData();
+			}
+			
+		}
+		
+	}
+	
+	function getshort() {
+		var index = 0;
+		var ih = aLi[index].offsetHeight;
+		for (var i=1; i<len; i++) {
+			if ( aLi[i].offsetHeight < ih ) {
+				index = i;
+				ih = aLi[i].offsetHeight;
+			}
+		}
+		return index;
+	}
+	
+	function getTop(obj) {
+		var iTop = 0;
+		while(obj) {
+			iTop += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+		return iTop;
+	}
+		
+	}
+	</script>
+</head>
+<body>
+	<ul id="piclist">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

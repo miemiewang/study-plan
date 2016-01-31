@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel='stylesheet' href='stylesheets/style.css' type='text/css' />
+	<script src='js/jquery-1.11.0.min.js'></script>
+	<script src='js/tianmao.js'></script>
+</head>
+<body>
+	<div class='header'>
+		<div class='wrapper'>
+			<div class='header_img'><img src='images/h1.png' /></div>
+		</div>
+		<div class='wrapper bgc'>
+			<div class='content'>
+				<div class='content_login'>
+					<span>喵，欢迎来天猫</span>
+					<span><a href='javascript:;'>请登录</a></span>
+					<span><a href='javascript:;'>免费注册</a></span>
+				</div>
+				<ul class='content_list'>
+					<li class='down_list'>
+						<a class='icon1' href='javascript:;'>我的淘宝</a>
+						<div class='nav_list'><a href='javascript:;'>已买到的宝贝</a><a href='javascript:;'>已卖出的宝贝</a></div>
+					</li>
+					<li><a class='icon2' href='javascript:;'>我的双十一</a></li>
+					<li><a class='icon3' href='javascript:;'>购物车<i>0</i>件</a></li>
+					<li class='down_list'>
+						<a class='icon4' href='javascript:;'>收藏夹</a>
+						<div class='nav_list'><a href='javascript:;'>收藏的宝贝</a><a href='javascript:;'>收藏的店铺</a></div>
+					</li>
+					<li class='down_list'>
+						<a class='icon5' href='javascript:;'>手机版</a>
+						<div class='nav_img'><img src='images/nav.png' /></div>
+					</li>
+					<li><a href='javascript:;'>淘宝网</a></li>
+					<li class='down_list'>
+						<a class='icon6' href='javascript:;'>商家支持</a>
+						<div class='nav_bar'>
+							<ul>
+								<li>商家:</li>
+								<li><a href='javascript:;'>商家中心</a><a href='javascript:;'>商家入驻</a></li>
+								<li><a href='javascript:;'>运营服务</a><a href='javascript:;'>商家品控</a></li>
+								<li><a href='javascript:;'>商家工具</a><a href='javascript:;'>商家规则</a></li>
+								<li><a href='javascript:;'>天猫智库</a><a href='javascript:;'>喵言喵语</a></li>
+							</ul>
+							<div>
+								<span>帮助</span>
+								<span class='last'><a href='javascript:;'>帮助中心</a></span>
+							</div>	
+						</div>
+					</li>
+					<li class='down_list icon_left'>
+						<a class='icon7' href='javascript:;'>网站导航</a>
+						<div class='all_bar'>
+							<div class='first_bar'>
+								<p>热点推荐 hot!</p>
+								<div class='all_kind'> 	
+									<a href='javascript:;'>天猫超市</a>
+									<a href='javascript:;'>喵先生</a>
+									<a href='javascript:;'>科技新品</a>
+									<a href='javascript:;'>女装新品</a>
+									<a href='javascript:;'>酷玩街</a>
+									<a href='javascript:;'>内衣新品</a>
+									<a href='javascript:;'>试美妆</a>
+									<a href='javascript:;'>运动新品</a>
+									<a href='javascript:;'>时尚先生</a>
+									<a href='javascript:;'>户外名品</a>
+									<a href='javascript:;'>精明妈咪</a>
+									<a href='javascript:;'>聚乐会</a>
+									<a href='javascript:;'>企业采购</a>
+									<a href='javascript:;'>会员积分</a>
+									<a href='javascript:;'>天猫国际</a>
+								</div>	
+							</div>
+							<div class='second_bar'>
+								<p>行业市场 Market</p>
+								<div class='all_kind'> 	
+									<a href='javascript:;'>美妆</a>
+									<a href='javascript:;'>电器</a>
+									<a href='javascript:;'>女装</a>
+									<a href='javascript:;'>男装</a>
+									<a href='javascript:;'>女鞋</a>
+									<a href='javascript:;'>男鞋</a>
+									<a href='javascript:;'>内衣</a>
+									<a href='javascript:;'>箱包</a>
+									<a href='javascript:;'>运动</a>
+									<a href='javascript:;'>户外</a>
+									<a href='javascript:;'>母婴</a>
+									<a href='javascript:;'>家装</a>
+									<a href='javascript:;'>医药</a>
+									<a href='javascript:;'>食品</a>
+									<a href='javascript:;'>配饰</a>
+									<a href='javascript:;'>汽车</a>
+								</div>	
+							</div>
+							<div class='third_bar'>
+								<p>品牌风尚 Brand</p>
+								<div class='all_kind'> 	
+									<a href='javascript:;'>大牌街</a>
+									<a href='javascript:;'>潮牌街</a>
+									<a href='javascript:;'>天猫原创</a>
+									<a href='javascript:;'>今日最大牌</a>
+									<a href='javascript:;'>一周新发现</a>
+									<a href='javascript:;'>全球至尚</a>
+								</div>
+							</div>
+							<div class='forth_bar'>
+								<p>服务指南 Help</p>
+								<div class='all_kind'>
+									<a href='javascript:;'>帮助中心</a>
+									<a href='javascript:;'>品质保障</a>
+									<a href='javascript:;'>特色服务</a>
+									<a href='javascript:;'>7天退换货</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class='wrapper bg'>
+			<div class='content'>
+				<div class='search'>
+					<input type='text' class='search_text' value='私货床品推荐，快抢购！'/>
+					<input type='button' class='search_box' value='搜索'/>
+					<ul class='search_result'></ul>
+				</div>
+				<div class='keyword'>
+					<a href='javascript:;'>外套 女</a>
+					<a href='javascript:;'><i>安全座椅</i></a>
+					<a href='javascript:;'>牛仔裤</a>
+					<a href='javascript:;'><i>大闸蟹</i></a>
+					<a href='javascript:;'><i>蜂蜜</i></a>
+					<a href='javascript:;'>沙发</a>
+					<a class='last' href='javascript:;'>奶粉</a>
+				</div>
+				<ul class='nav_bar'>
+					<li><a href='javascript:;'>尚天猫</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>喵鲜生</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>天猫会员</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>电器城</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>天猫超市</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>医药馆</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>阿里旅行</a></li>
+					<li>/</li>
+					<li><a href='javascript:;'>天猫国际</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

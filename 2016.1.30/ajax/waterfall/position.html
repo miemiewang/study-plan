@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<style>
+*{padding:0;margin:0;}
+ul{width:1210px;border:1px solid #000;margin:0px auto;}
+ul:after{content:"001";overflow:hidden;visibility:hidden;display:block;height:0;clear:both;}
+li{list-style:none;border:1px solid #000;width:360px;padding:10px;position:absolute;}
+img{width:360px;}
+p{word-wrap:break-word;}
+</style>
+<script src="ajax.js"></script>
+<script>
+window.onload=function(){
+	var oUl=document.getElementsByTagName('ul')[0];
+	var aLi=document.getElementsByTagName('li');
+	var json={L:[],C:[],R:[]};
+	var iPage=1;
+	var onoff=true;
+	getData();
+	function getData(){
+		ajax('get','getPics.php','cpage='+iPage,function(data){
+			var data=JSON.parse(data);
+			if(!data.length){
+				return;
+			}
+			for(var i=0;i<data.length;i++){
+				var oLi=document.createElement('li');
+				var oImg=document.createElement('img');
+				oImg.src=data[i].preview;
+				oImg.style.width='360px';
+				oImg.style.height=data[i].height*(360/data[i].width)+'px';
+				oLi.appendChild(oImg);
+				var oP=document.createElement('p');
+				oP.innerHTML=data[i].title;
+				oLi.appendChild(oP);
+				oUl.appendChild(oLi);
+			}
+			for(var i=0;i<aLi.length;i++){
+				var iNow=i%3;
+				var aW=aLi[0].offsetWidth;
+				switch(iNow){
+				case 0:		
+				aLi[i].style.left="10px";
+				getTop(aLi[i],i,json.L);
+				break;
+				case 1:
+				aLi[i].style.left=30+aW+'px';
+				getTop(aLi[i],i,json.C);
+				break;
+				case 2:
+				aLi[i].style.left=50+(aW*2)+'px';
+				getTop(aLi[i],i,json.R);
+				break;
+				}
+			}
+			onoff=true;
+		})
+	}
+	/*window.onscroll=function(){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		for(var i=0;i<aLi.length;i++){
+				if(iTop(aLi[i])+aLi[i].offsetHeight<document.documentElement.clientHeight+scrollTop){
+					if(onoff){
+						onoff=false;
+						iPage++;
+						getData();
+					}
+				}
+		}	
+	}*/
+	function iTop(obj){
+		var iH=0;
+		while(obj){
+			iH+=obj.offsetHeight;
+			obj=obj.offsetParent;
+		}
+		return iH;
+	}
+	function getTop(obj,num,attr){
+		var sum=0;
+		var Num=Math.floor(num/3);
+		attr.push(aLi[num].offsetHeight);
+		for(var j=0;j<Num;j++){
+			sum+=20+attr[j];
+			obj.style.top=sum+'px';
+		}
+	}	
+}
+</script>
+</head>
+
+<body>
+<ul></ul>
+</div>
+</body>
+</html>

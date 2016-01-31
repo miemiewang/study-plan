@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul{list-style:none;margin:0;padding:0;}
+	li{border-bottom:solid 1px #000;font-size:16px;padding-top:10px;padding-bottom:10px;}
+	</style>
+	<script>
+	var aBtn=null;
+	var aLi=null;
+	var oP=null;
+	var oDl=null;
+	var oDt=null;
+	var oUl=null;
+	function fn1(data){
+		var html='';
+		oP.innerHTML='搜索到'+aBtn[0].value+'结果为：'+data['opensearch:totalResults'].$t+'条';
+		for(var i=0;i<data.entry.length;i++){
+			html+='<li><dl>'+data.entry[i].title.$t+'</dl><dt><img src="'+data.entry[i].link[2]['@href']+'" /></dt></li>';
+		}
+		oUl.innerHTML=html;
+	}
+	window.onload=function(){
+		aBtn=document.getElementsByTagName('input');
+		aLi=document.getElementsByTagName('li');
+		oP=document.getElementsByTagName('p')[0];
+		oDl=document.getElementsByTagName('dl')[0];
+		oDt=document.getElementsByTagName('dt')[0];
+		oUl=document.getElementsByTagName('ul')[0];
+		aBtn[1].onclick=function(){
+			if(aBtn[0].value!=''){
+				var oScript=document.createElement('script');
+				oScript.src='http://api.douban.com/book/subjects?q='+aBtn[0].value+'&alt=xd&callback=fn1&statr-index=20&max-results=20';
+				document.body.appendChild(oScript);
+			}
+		}
+	}
+	</script>
+</head>
+
+<body>
+	<input type="text" /><input type="button" value="搜索结果" />
+	<hr/>
+	<p>搜索结果为：条</p>
+	<hr/>
+	<ul></ul>
+</body>
+</html>

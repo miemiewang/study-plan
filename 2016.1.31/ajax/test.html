@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='jquery-1.11.0.min.js'></script>
+	<script>
+		$(function(){
+			$('input').click(function(event){
+				event.preventDefault();
+				$.getJSON('b.json',function(data){
+					var html='';
+					$.each(data,function(index,attr){
+						alert(index);
+						alert(attr);
+						html+='<div class="term">'+attr.term+'</div>';
+					})
+					$('.wrap').append(html);
+					
+				})
+				/*$.ajax('b.json',{
+					success:function(){
+						alert(1);
+					},
+					error:function(){
+						alert(0);
+					}
+				})*/
+			})
+		})
+	</script>
+</head>
+<body>
+	<!-- <div class='content'>
+		<h6>张三</h6>
+		<p class='para'>沙发</p>
+	</div>
+	<div class='content'>
+		<h6>王五</h6>
+		<p class='para'>地板</p>
+	</div>
+	<div class='content'>
+		<h6>李四</h6>
+		<p class='para'>空调</p>
+	</div> -->
+	<input type='submit' value='ajax操作' />
+	<div class='wrap'></div>
+</body>
+</html>
